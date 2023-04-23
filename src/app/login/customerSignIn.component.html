@@ -1,0 +1,40 @@
+<div class="bg-img" >
+
+  <div class="login-container">
+    <div class="login-modal">
+      <div class="login-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuiFN8Q_xkvfuvYoY3gVH4K8VCCzt6Xo647URVw5AIOQ&usqp=CAU&ec=48665701" alt="Login Image" class="rounded-circle">
+      </div>
+      <div class="login-form">
+        <h1 class="login-title">Property Investment</h1>
+
+
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+          <div class="form-group">
+            <label for="customerMail"><i class="fas fa-envelope"></i> Email</label>
+            <input type="customerMail" class="form-control" [(ngModel)]="login.customerMail" name="customerMail" required>
+            <!-- Add appropriate validation styles for invalid input -->
+            <!-- <div *ngIf="form.controls['customerMail'].invalid && (form.controls['customerMail'].dirty || form.controls['customerMail'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid email</div> -->
+            <div *ngIf="form.controls['customerMail'].invalid && (form.controls['customerMail'].dirty || form.controls['customerMail'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid email</div>
+
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i>Password</label>
+            <input type="password" class="form-control" [(ngModel)]="login.password" name="password" required>
+
+            <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid password</div>
+
+          </div>
+
+          <button type="submit" class="btn-login"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+          <div class="signup-link">
+            Don't have an account? <a routerLink="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+          </div>
+          <div class="text-center">
+            <a class="small" routerLink="/customer/:mode/:id">Forgot password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>

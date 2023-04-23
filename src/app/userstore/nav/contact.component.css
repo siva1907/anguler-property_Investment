@@ -1,0 +1,82 @@
+.image{
+  width:100%;
+}
+.title1{
+  justify-content: center;
+  margin-top: -100px;
+  margin-left: 600px;
+  font-weight: bold;
+  /* margin: 0px; */
+  font-size: 3rem;
+  font-family: gourmand-bold;
+  color: #fff;
+
+}
+
+.share{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15%;
+  margin-top: 10%;
+  margin-right: 10%;
+
+}
+.share-val2{
+  margin-left: 35%;
+
+}
+.share-val3{
+  margin-left: 40%;
+  margin-right: 30%;
+}
+.share1{
+  margin-bottom: 0.3125rem;
+  font-size: 22px;
+  font-family: proxi-regular;
+  font-weight: bold;
+  margin-left: -5%;
+}
+.share2{
+  margin-bottom: 0.3125rem;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: proxi-regular;
+  margin-left: -186%;
+}
+.share3{
+  margin-bottom: 0.3125rem;
+  font-size: 22px;
+  font-family: proxi-regular;
+  margin-left: -100%;
+  font-weight: bold;
+}
+
+.sharevalue1{
+  font-family: proxi-regular;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 2rem;
+  margin-left: -5%;
+}
+
+.sharevalue2{
+  font-family: proxi-regular;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 2rem;
+  margin-left: -220%;
+}
+
+.sharevalue3{
+  font-family: proxi-regular;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 2rem;
+  margin-left: -100%;
+}
+/* .image-refer{
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+
+} */

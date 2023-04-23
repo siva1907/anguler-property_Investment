@@ -1,0 +1,32 @@
+<nav class="nav">
+  <div class="navigations">
+    <ul class="navList">
+      <li><button
+        type="button"
+        class="add fa fa-home"
+        routerLink="/admin"
+        style="width: 100%"
+      >
+        Home
+      </button></li>
+      <li><button
+        type="button"
+        class="add"
+        style="width: 100%"
+        routerLink="/order"
+      >
+        Orders
+      </button></li>
+      <li><button
+        type="button"
+        class="add"
+        style="width: 100%"
+        routerLink="/add"
+      >
+        Add Property
+      </button></li>
+    </ul>
+  </div>
+
+  <div class="profile far fa-user-circle "> {{ admin?.adminName}}</div>
+</nav>

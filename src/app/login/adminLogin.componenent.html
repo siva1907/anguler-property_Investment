@@ -1,0 +1,81 @@
+<div
+  class="login-container"
+  style="
+    background-image: url('https://m.economictimes.com/thumb/msid-94112947,width-1200,height-900,resizemode-4,imgsize-691714/houses.jpg');
+  "
+>
+  <div class="login-container">
+    <div class="login-modal">
+      <div class="login-image">
+        <img
+          src="https://www.pngall.com/wp-content/uploads/2016/07/Real-Estate-Investment-Free-Download-PNG.png"
+          alt="property"
+          class="rounded-circle"
+        />
+      </div>
+      <div class="login-form">
+        <h1 class="login-title">Admin Login</h1>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+          <div class="form-group">
+            <label for="email"
+              ><i class="fas fa-envelope"></i> Admin Name</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              [(ngModel)]="admin.adminName"
+              name="adminName"
+              required
+            />
+            <!-- Add appropriate validation styles for invalid input -->
+            <div
+              *ngIf="!undefined &&
+                form.controls['adminName'].invalid &&
+                (form.controls['adminName'].dirty ||
+                  form.controls['adminName'].touched)
+              "
+              class="error-message"
+            >
+              <i class="fas fa-exclamation-circle"></i> Please enter a valid
+              Admin Name
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> Password</label>
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="admin.password"
+              name="password"
+              required
+            />
+            <!-- Add appropriate validation styles for invalid input -->
+            <div
+              *ngIf="
+                form.controls['password'].invalid &&
+                (form.controls['password'].dirty ||
+                  form.controls['password'].touched)
+              "
+              class="error-message"
+            >
+              <i class="fas fa-exclamation-circle"></i> Please enter a valid
+              password
+            </div>
+          </div>
+
+          <button type="submit" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+          </button>
+          <div class="text-center">
+            <a class="small" routerLink="">Forgot password?</a>
+          </div>
+          <div></div>
+          <div class="signup-link">
+            Don't have an account?
+            <a routerLink="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

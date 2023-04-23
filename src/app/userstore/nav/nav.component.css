@@ -1,0 +1,164 @@
+.navbar {
+  display: flex;
+  background-color: #150d013d;
+  justify-content: space-between;
+  height: fit-content;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+
+.navbar-scrolled {
+  background-color: #000; /* Set the new background color */
+  color: white;
+}
+.ggdl93 {
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-flex;
+  height: 30px;
+  width: 30px;
+  color: #212f3d;
+}
+
+.profile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f1f1f1;
+  display: none;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-size: 20px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-decoration: none;
+  gap: 0.5rem;
+  color: #100d0d
+}
+
+.dropdown{
+  display: block;
+    position: absolute;
+    top: 2.5rem;
+    width: 7rem;
+    height: 3rem;
+    background-color: white;
+    color: red;
+    right: 2rem;
+    border-radius: 5px;
+}
+
+.login {
+  color: #212f3d;
+  margin: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border: solid 1px;
+  background: none;
+  border-radius: 50px;
+  font-size: larger;
+  border-color: #6b6868;
+
+}
+
+.login:hover{
+  background-color: #6b6868;
+  color: #fff;
+  transition: all 0.5s;
+}
+
+.cover-img {
+  width: 100%;
+  opacity: 0.7;
+
+  /* position: absolute; */
+}
+
+.site-name {
+  padding: 5px 30px;
+  color: #e74c36;
+  display: flex;
+  flex-direction: row;
+}
+.logo {
+  width: 28px;
+  position: relative;
+}
+.site-menu {
+  padding: 0.6rem;
+  position: relative;
+  top: 0px;
+}
+.buttons {
+  text-decoration: none;
+  color: #212f3d;
+  padding-left: 0rem;
+  border: none;
+  /* background-color:#150d0113; */
+  background: none;
+  font-size: larger;
+  position: relative;
+  z-index: 2;
+  transition: color 0.2s ease-in-out;
+}
+
+/* .buttons:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+} */
+
+.buttons::before,
+.buttons::after {
+  content: ""; /* Empty content for the pseudo-elements */
+  position: absolute;
+  bottom: -2px; /* Position the underline at the bottom of the button */
+  height: 2px; /* Set the height of the underline */
+  width: 0%; /* Start with the underline at 0% width */
+  background-color: #212f3d; /* Set the color of the underline */
+  transition: width 0.2s ease-in-out; /* Add a transition to the width property */
+}
+
+.buttons::before {
+  left: 0; /* Position the left part of the underline at the left of the button */
+}
+
+.buttons::after {
+  right: 0; /* Position the right part of the underline at the right of the button */
+}
+
+.buttons:hover::before {
+  width: 50%; /* On hover, transform the left part of the underline from 0% to 50% width */
+}
+
+.buttons:hover::after {
+  width: 50%; /* On hover, transform the right part of the underline from 0% to 50% width */
+}
+
+.buttons-scrolled {
+  color: #fff; /* Set the new text color */
+}
+
+.buttons-scrolled::before,
+.buttons-scrolled::after {
+  background-color: #fff; /* Set the new underline color */
+}
+
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+

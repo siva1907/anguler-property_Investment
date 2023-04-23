@@ -1,0 +1,15 @@
+.table{
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+  width: 80%;
+  left: 10%;
+
+}
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}

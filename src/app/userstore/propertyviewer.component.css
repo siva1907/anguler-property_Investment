@@ -1,0 +1,143 @@
+.actions {
+  padding: 1rem;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  box-shadow: 10px 10px 10px gray;
+  border-radius: 10px;
+  margin-top: 5rem;
+}
+
+.imgcard {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
+img {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.address {
+  padding: 2rem;
+}
+
+strong {
+  font-size: larger;
+}
+.addressText {
+  font-weight: 600;
+}
+
+.propDetails {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.proHeading {
+  font-size: larger;
+  color: black;
+  font-family:  math;
+  font-weight: bolder;
+  margin-bottom: -1px;
+
+}
+
+.pro {
+  color: rgb(86, 84, 84);
+  padding: 0.5rem;
+  font-family:  math;
+  width: 30%;
+
+}
+
+.admin {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  font-family:  math;
+}
+
+.adminHeading{
+  padding-right: 4rem;
+  font-family:  math;
+}
+
+.actions{
+ float:right;
+}
+
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.content{
+  background-color: white;
+  width: 22rem;
+  height: 30rem;
+padding: 1rem;
+}
+.popup{
+
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  padding:0  30px 30px ;
+  color: #333;
+  width: 22rem;
+  height: 30rem;
+
+}
+.popup button{
+  width: 100%;
+  margin-top: 6rem;
+  padding: 10px 0;
+  background: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5 px rgba(0,0, 0, 0.2);
+}
+.img{
+  padding: 1rem;
+}
+.btn-link {
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  background: #00d199;
+  border-color: #00d199;
+
+
+}
+.button{
+  width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}

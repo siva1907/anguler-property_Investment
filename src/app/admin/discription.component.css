@@ -1,0 +1,78 @@
+.actions {
+  padding: 1rem;
+}
+
+.main {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  position: absolute;
+    top: 70px;
+    left: 10%;
+    z-index: -1;
+  box-shadow: 10px 10px 10px gray;
+  border-radius: 10px;
+  overflow-y: auto;
+  /* webkit-sc */
+}
+.imgcard {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
+img {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.address {
+  padding: 2rem;
+}
+
+strong {
+  font-size: larger;
+}
+.addressText {
+  font-weight: 600;
+}
+
+.propDetails {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.proHeading {
+  font-size: larger;
+  color: black;
+  font-family:  math;
+  font-weight: bolder;
+  margin-bottom: -1px;
+}
+
+.pro {
+  color: rgb(86, 84, 84);
+  padding: 0.5rem;
+  font-family:  math;
+  width: 30%;
+}
+
+.admin {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+  font-family:  math;
+}
+
+.adminHeading{
+  padding-right: 4rem;
+  font-family:  math;
+}
+
+.actions{
+  float: right;
+}

@@ -1,0 +1,31 @@
+a{
+  font-family: proxi-regular;
+    font-size: 1rem;
+margin-right: 2rem;
+padding:1rem;
+   float: left;
+}
+a,a:hover{
+  text-decoration: none;
+}
+.mainfooter{
+  width:100% ;
+  position: static;
+  z-index: 1;
+}
+.footer{
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+
+}
+.footer-copyright{
+  text-align: center;
+}
+.heading{
+  padding-top: 0.5rem;
+ text-align: center;
+}
+.footer_content{
+  padding: 1rem;
+}

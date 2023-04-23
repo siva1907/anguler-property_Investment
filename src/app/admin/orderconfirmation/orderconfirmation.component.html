@@ -1,0 +1,32 @@
+<admin-component></admin-component>
+
+<table class="table" style="width: 95%; color: #212529; margin: auto">
+  <thead style="background-color: #caecfffb">
+
+      <th scope="col">Order ID</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Property</th>
+      <th scope="col">Order Price</th>
+      <th scope="col">No.of Units</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+
+
+    </thead>
+  <tbody>
+
+          <tr *ngFor="let order of orders">
+            <td>{{ order.orderId }}</td>
+            <td>{{ order.customerId?.customerName}}</td>
+            <td>{{ order.propertyId?.name }}</td>
+            <td>{{ order.orderPrice | currency:'INR' }}</td>
+            <td>{{ order.noOfUnits }}</td>
+            <td>{{ order.orderDate | date }}</td>
+          <td [ngClass]="{'text-success': order.orderStatus === 'approved', 'text-danger': order.orderStatus === 'pending'}">{{order.orderStatus}}</td>
+
+            <td><button  class="btn btn-sm btn-warning" *ngIf="order.orderStatus === 'pending' " (click)="getOrder(order.orderId! )" >Approve</button>
+              <button class="btn btn-sm btn-danger" *ngIf="order.orderStatus === 'pending' " (click)="confirmDeleteOrder(order.orderId!)">Cancel</button></td>
+          </tr>
+        </tbody>
+      </table>

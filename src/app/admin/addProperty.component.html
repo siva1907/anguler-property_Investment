@@ -1,0 +1,152 @@
+<admin-component></admin-component>
+<div style="position: absolute;top: 5rem;width: 100%;z-index: -1;">
+  <div
+    style="width: 50%; margin: auto;z-index: 1;"
+    class="bg-primary p-2 text-white"
+    [class.bg-warning]="editing"
+    [class.text-dark]="editing"
+  >
+    <h5>{{ editing ? "Edit" : "Add" }} Property</h5>
+  </div>
+
+  <form
+    novalidate
+    #form="ngForm"
+    (ngSubmit)="save(form)"
+    style="width: 50%; margin: auto"
+  >
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" name="name" [(ngModel)]="property.name" />
+    </div>
+
+    <div class="form-group">
+      <label>Area</label>
+      <input class="form-control" name="area" [(ngModel)]="property.area" />
+    </div>
+
+    <div class="form-group">
+      <label>Image Url</label>
+      <input
+        class="form-control"
+        name="imageUrl"
+        [(ngModel)]="property.imageUrl"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>TotalCost</label>
+      <input
+        class="form-control"
+        name="totalCost"
+        [(ngModel)]="property.totalCost"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>ShareVal</label>
+      <input
+        class="form-control"
+        name="shareVal"
+        [(ngModel)]="property.shareVal"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>TotalUnits</label>
+      <input
+        class="form-control"
+        name="totalUnits"
+        [(ngModel)]="property.totalUnits"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Status</label>
+      <select class="form-control" name="status" [(ngModel)]="property.status">
+        <option value="active">active</option>
+        <option value="inactive">inactive</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>StartDate</label>
+      <input
+        type="date"
+        class="form-control"
+        name="startDate"
+        [(ngModel)]="property.startDate"
+      />
+    </div>
+
+    <fieldset align="center" style="border: solid 1px; padding: 1rem 0.5rem">
+      <legend style="width: fit-content">Property Location</legend>
+      <div class="form-group">
+        <label>Street</label>
+        <input
+          class="form-control"
+          name="street"
+          [(ngModel)]="property.propertyLocation!.street"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>City</label>
+        <input
+          class="form-control"
+          name="city"
+          [(ngModel)]="property.propertyLocation!.city"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Pincode</label>
+        <input
+          class="form-control"
+          name="pincode"
+          [(ngModel)]="property.propertyLocation!.pincode"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>State</label>
+        <select
+          class="form-control"
+          aria-label="Default select example"
+          name="state"
+          [(ngModel)]="property.propertyLocation!.state"
+        >
+          <option value="Karnataka" selected>Karnataka</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Country</label>
+        <select
+          class="form-control"
+          name="state"
+          [(ngModel)]="property.propertyLocation!.country"
+        >
+          <option value="India" selected>India</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [class.btn-warning]="editing"
+      style="margin-top: 1rem; margin-bottom: 2rem"
+    >
+      {{ editing ? "Update" : "Add" }}
+    </button>
+    <button
+      type="reset"
+      class="btn btn-secondary"
+      routerLink="/admin"
+      style="margin-left: 2rem; margin-top: 1rem; margin-bottom: 2rem"
+    >
+      Cancel
+    </button>
+  </form>
+</div>

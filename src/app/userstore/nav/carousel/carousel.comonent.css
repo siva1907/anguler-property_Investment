@@ -1,0 +1,53 @@
+
+*{
+    
+    box-sizing: border-box;
+  }
+  .home{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  
+  .nav-component{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: fit-content;
+    z-index: 2;
+  }
+
+
+   .Work
+   {
+    width:60%;
+    height: 80%;
+    /* margin-left: 300px; */
+   }
+   .slide{
+    padding-left: 300px;
+   }
+  #carouselExampleIndicators{
+   padding-left: 300px;
+ align-items: center;
+  }
+
+  
+img{
+   margin: 6rem;
+    z-index: 1;
+   
+  
+  
+  }
+  .left{
+    margin-left: 0%;
+    margin-right: 0%;
+    color: red;
+  }
+  .right{
+  
+    margin-left: 0%;
+    margin-right: 0%;
+    color: red;
+  }

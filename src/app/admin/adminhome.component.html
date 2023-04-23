@@ -1,0 +1,33 @@
+<div><admin-component></admin-component></div>
+
+<table class="table" style="width: 95%; color: #212529; margin: auto">
+  <thead style="background-color: #e3f2fd">
+    
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="col">Property Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Share Value</th>
+      <th scope="col">Remaing Units</th>
+    </tr>
+    <tr *ngFor="let property of properties; let i = index">
+      <td>{{ property.name }}</td>
+      <td>{{ property.status }}</td>
+      <td>{{ property.startDate | date }}</td>
+      <td>{{ property.shareVal }}</td>
+      <td>{{ property.remainingUnits }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-lg view"
+          [routerLink]="['/admin/', property.id]"
+          style="margin-right: 0.5rem; padding: 0.2rem 1.2rem"
+        >
+          View Details
+        </button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>

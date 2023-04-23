@@ -1,0 +1,18 @@
+.view {
+  background-color: #fff;
+  color: orange;
+}
+
+.view:hover {
+  background-color: orange;
+  color: #fff;
+}
+.table {
+  width: 80%;
+  margin-left: 2rem;
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+  left: 10%;
+  display: flex;
+}

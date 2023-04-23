@@ -1,0 +1,130 @@
+<home-nav></home-nav>
+<div class="main">
+  <div class="card mb-3 imgcard">
+    <img src="{{ property.imageUrl }}" class="card-img-top" alt="..." />
+    <div class="address">
+      <span><i class="fas fa-map-marker-alt" style="font-size: 38px"></i></span
+      ><span> </span>
+      <address>
+        <strong>{{ property.name }}</strong
+        ><br />
+        <span>{{ property.propertyLocation?.street }} , </span>
+        <span>{{ property.propertyLocation?.city }}-</span>
+        <span>{{ property.propertyLocation?.pincode }}</span
+        ><br />
+        <span>{{ property.propertyLocation?.state }}</span
+        ><br />
+        <span>{{ property.propertyLocation?.country }}</span>
+      </address>
+      <hr />
+      <div class="propDetails">
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-building"></i> Area</p>
+          {{ property.area }} m<sup>2</sup>
+        </div>
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-tags"></i> Total Cost</p>
+          {{ property.totalCost | currency : "INR" : "symbol" }}
+        </div>
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-chart-line"></i> Share Value</p>
+          {{ property.shareVal | currency : "INR" : "symbol" }}
+        </div>
+
+        <div class="pro">
+          <p class="proHeading"><i class="fas fa-sitemap"></i> Total Units</p>
+          {{ property.totalUnits }}
+        </div>
+        <div class="pro">
+          <p class="proHeading">
+            <i class="fas fa-sitemap"></i> Remaining Units
+          </p>
+          {{ property.remainingUnits }}
+        </div>
+      </div>
+      <hr />
+      <div class="button">
+
+        <button type="button" class="btn btn-link invest-now-btn "  data-toggle="modal" data-target="#investmentInitModal" (click)="openpop()">Buy Now</button>
+        </div>
+    </div>
+    </div>
+    <div
+    style="float: left; margin-left: 3rem;"
+    routerLink="/home"
+    class="btn btn-secondary"
+  >
+    Back
+  </div>
+
+  </div>
+
+
+
+<div class="overlay" *ngIf="show">
+  <div class="content">
+    <div class="close" (click)="closepop()" style="cursor: pointer">
+      &times;
+    </div>
+    <div>
+      <strong>{{ property.name }}</strong
+      ><br />
+      <div class="pro">
+        <p class="proHeading"><i class="fas fa-tags"></i> totalCost</p>
+        {{ property.totalCost | currency : "INR" : "symbol" : "4.2-2" }}
+      </div>
+      <div class="pro">
+        <p class="proHeading"><i class="fas fa-sitemap"></i> RemainingUnits</p>
+        {{ property.remainingUnits }}
+      </div>
+
+      <div class="pro">
+        <p class="proHeading"><i class="fas fa-sitemap"></i> ShareValue</p>
+        {{ property.shareVal | currency : "INR" : "symbol" }}
+      </div>
+      Required Units:
+      <input type="text" [(ngModel)]="order.noOfUnits" required min="1" /><br />
+      <div>
+        OrderPrice<span style="color: red">
+          {{
+            order.noOfUnits! * property.shareVal! | currency : "INR" : "symbol"
+          }}</span
+        >
+      </div>
+    </div>
+    <button
+      type="button"
+      [className]="color"
+      *ngIf="property.remainingUnits != 0"
+      style="text-align: center; margin-top: 1rem"
+      (click)="bookProperty()"
+    >
+      {{ isBooked ? "processing" : "Book" }}
+    </button>
+    <button
+      class="btn btn-primary"
+      style="margin-left: 2rem; margin-top: 1rem"
+      (click)="closepop()"
+      routerLink="/home"
+    >
+      Cancel
+    </button>
+    <div class="cont">
+      <div *ngIf="isBooked" class="popup">
+        <div class="img">
+          <img
+            src="https://th.bing.com/th/id/OIP.c5Ae2jEhX7I8V7cQWxH68wHaHa?pid=ImgDet&w=195&h=195&c=7&dpr=1.5"
+          />
+        </div>
+        <h2>Thank You!</h2>
+        <p>
+          Thank you for booking our team representative will contact to you once
+          the order is confirmed
+        </p>
+        <button type="button" (click)="closepop()" routerLink="/home">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

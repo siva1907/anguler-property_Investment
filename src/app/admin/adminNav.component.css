@@ -1,0 +1,36 @@
+.nav
+{
+  color: aliceblue;
+  width: 100%;
+  background-color: rgb(35, 34, 34);
+  height: 3rem;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  float: right;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  font-variant: all-small-caps;
+}
+.navigations{
+  display: flex;
+  justify-content: center;
+  font-variant: all-small-caps;
+}
+
+.navList{
+  list-style: none;
+  display: flex;
+  gap: 10rem;
+  /* position: relative; */
+  margin-bottom: 0px;
+}
+
+.add{
+  color: whitesmoke;
+  background: none;
+  border: none;
+  font-variant: all-small-caps;
+}

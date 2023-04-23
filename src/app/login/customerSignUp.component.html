@@ -1,0 +1,112 @@
+<div class="body">
+  <section>
+    <div class="form-container">
+      <h2 class="create">Create New Account</h2>
+      <hr />
+      <form #form="ngForm" (ngSubmit)="form.valid && save(form)">
+        <label for="name"></label>
+
+        <input
+          type="text"
+          id="name"
+          name="customerName"
+          placeholder="Enter Your name.."
+          [(ngModel)]="customer.customerName"
+          required
+        />
+
+        <label for="email"></label>
+        <input
+          type="text"
+          id="email"
+          name="customerMail"
+          placeholder="Enter Your email.."
+          [(ngModel)]="customer.customerMail"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          required
+        />
+
+        <label for="Enter Mobile Number"></label>
+        <input
+          type="text"
+          id="customerPhno"
+          name="customerPhno"
+          placeholder="Enter Mobile Number..."
+          [(ngModel)]="phoneNumber"
+        />
+
+        <label for="password"></label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter Password..."
+          [(ngModel)]="customer.password"
+        />
+        <!-- <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" formControlName="password" [(ngModel)]="customer.password" id="inputPassword">
+
+          </div> -->
+
+        <table>
+          <tr>
+            <td>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter The Street.."
+                [(ngModel)]="customer.customerlocation!.street"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter The City.."
+                [(ngModel)]="customer.customerlocation!.city"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="text"
+                id="number"
+                name="pincode"
+                placeholder="Enter The Pincode.."
+                [(ngModel)]="customer.customerlocation!.pinCode"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="state"
+                name="state"
+                placeholder="Enter The state.."
+                [(ngModel)]="customer.customerlocation!.state"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                placeholder="Enter The country.."
+                [(ngModel)]="customer.customerlocation!.country"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" class="sub">Signup</button>
+              <button routerLink="/signin" class="sub">back</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </section>
+</div>
