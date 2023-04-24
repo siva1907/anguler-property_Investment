@@ -3,7 +3,9 @@ import { Property } from './property.model';
 import { RestDataSource } from './rest.datasource';
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+ })
 export class PropertyRepositary {
   private properties: Property[] = [];
 

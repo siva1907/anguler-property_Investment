@@ -3,8 +3,9 @@ import { Customer } from './customer.model';
 import { RestDataSource } from './rest.datasource';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+ })
 export class CustomerSigninRepository {
 
   public customers: Customer[] = [];

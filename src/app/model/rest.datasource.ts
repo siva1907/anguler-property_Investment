@@ -9,7 +9,9 @@ import { Admin } from './admin.model';
 const PROTOCOL = 'http';
 const PORT = 8082;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+ })
 export class RestDataSource {
    
   // baseUrl: string;
@@ -19,22 +21,22 @@ export class RestDataSource {
   }
 
   getProperties(): Observable<Property[]> {
-    return this.http.get<Property[]>(`http://localhost:8080/api/property/`);
+    return this.http.get<Property[]>(`http://localhost:8080/api/property`);
   }
 
   getProperty(pid:number): Observable<Property> {
     return this.http.get<Property>(`http://localhost:8080/api/property/${pid}`);
   }
 
-  saveProperty(property: Property, id: number): Observable<Property> {
+  saveProperty(property: Property, adminId: number): Observable<Property> {
     if (property.id == null || property.id == 0) {
       return this.http.post<Property>(
-        `http://localhost:8080/api/property/${id}`,
+        `http://localhost:8080/api/property/${adminId}`,
         property
       );
     } else {
       return this.http.put<Property>(
-        `http://localhost:8080/api/property/${id}`,
+        `http://localhost:8080/api/update-property/${adminId}`,
         property
       );
     }

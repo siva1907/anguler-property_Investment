@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Customer } from 'src/app/model/customer.model';
 import { CustomerSigninRepository } from 'src/app/model/customerSignIn.repository';
 
@@ -14,7 +14,7 @@ export class NavComponent {
   isScrolled = false;
   navbarHeight = 100; // Set the height of your navbar here
  
-  constructor(private customerRepo: CustomerSigninRepository,private routeing:RouterLink ) {
+  constructor(private customerRepo: CustomerSigninRepository,private rout :Router) {
   }
 
 
@@ -29,7 +29,7 @@ export class NavComponent {
 
   viewCustomer()
   {
-   // this.routeing.routerLink=`/orders/${this.customer.id}`;
+    this.rout.navigateByUrl(`/orders/${this.customer.id}`);
   }
 
   showDropdown() {

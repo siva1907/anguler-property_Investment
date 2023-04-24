@@ -27,6 +27,7 @@ import { CarouselComponent } from './userstore/nav/carousel/carousel.component';
     AdminModule,
     LoginModule,
     PropertyModule,
+    
     RouterModule.forRoot([
       { path: 'add/:mode/:id', component: AddPropertyComponent },
       { path: 'add', component: AddPropertyComponent },

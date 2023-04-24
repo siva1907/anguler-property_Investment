@@ -11,12 +11,13 @@ import { ContactComponent } from "./nav/contact.component";
 import { FooterComponent } from "./footer/footer.component";
 import { GraphComponent } from "../graph/graph.comoponent";
 import { CarouselComponent } from "./nav/carousel/carousel.component";
+import { ModelModule } from "../model/model.module";
 
 
 
 
 @NgModule({
-    imports: [CommonModule, FormsModule,RouterModule],
+    imports: [CommonModule, FormsModule,RouterModule,ModelModule],
     declarations: [PropertyComponent,ViewComponent,NavComponent, AboutComponent, ContactComponent,FooterComponent,GraphComponent,CarouselComponent],
     exports: [GraphComponent,CarouselComponent]
 })
