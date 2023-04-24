@@ -29,7 +29,7 @@ export class NavComponent {
 
   viewCustomer()
   {
-    this.routeing.routerLink=`/orders/${this.customer.id}`;
+   // this.routeing.routerLink=`/orders/${this.customer.id}`;
   }
 
   showDropdown() {
