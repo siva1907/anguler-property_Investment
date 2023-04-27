@@ -1,6 +1,7 @@
 import { PropertyOrder } from './../model/order.model';
 import { OrderRepository } from './../model/order.repository';
-
+// import{Chart,registerables}from 'node_modules/chart.js';
+// Chart.register(...registerables);
 import { ActivatedRoute } from '@angular/router';
 
 import { Component, HostListener, OnInit } from '@angular/core';
@@ -41,9 +42,30 @@ export class ViewComponent {
     });
     this.customer = this.repo.getLogedInCustomer();
 
+   // this.RenderPropertyChart();
   }
 
-
+  // RenderPropertyChart()
+  // {
+  //       new Chart("propertychart", {
+  //         type: 'pie',
+  //         data: {
+  //           labels:['totalUnits ','remainingUnits'],
+  //           datasets: [{
+  //             label: 'Units',
+  //             data:[this.property.totalUnits,this.property.remainingUnits],
+  //             borderWidth: 1
+  //           }]
+  //         },
+  //         options: {
+  //           scales: {
+  //             y: {
+  //               beginAtZero: true
+  //             }
+  //           }
+  //         }
+  //       });
+  // }
 
   get logedInCustomer(): Customer {
     return this.customerRepo.getLogedInCustomer();

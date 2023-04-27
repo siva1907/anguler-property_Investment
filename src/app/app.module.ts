@@ -47,7 +47,7 @@ import { CustomerStoreComponent } from './userstore/nav/customerStore/CustomerSt
         component: AboutComponent,
       },
       {
-        path:'graph/:pid',component:GraphComponent
+        path:'graph/:id',component:GraphComponent
       },
       {
         path: 'contact',

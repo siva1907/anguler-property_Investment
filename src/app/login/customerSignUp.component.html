@@ -1,4 +1,4 @@
-<div class="body">
+<!-- <div class="body">
   <section>
     <div class="form-container">
       <h2 class="create">Create New Account</h2>
@@ -41,12 +41,12 @@
           id="password"
           name="password"
           placeholder="Enter Password..."
-          [(ngModel)]="customer.password"
-        />
-        <!-- <div class="form-floating mb-3">
+          [(ngModel)]="customer.password" -->
+        <!-- />
+        <div class="form-floating mb-3">
             <input type="password" class="form-control" id="floatingPassword" placeholder="Enter Password" formControlName="password" [(ngModel)]="customer.password" id="inputPassword">
 
-          </div> -->
+          </div> 
 
         <table>
           <tr>
@@ -110,6 +110,277 @@
               <button routerLink="/signin" class="sub" >back</button>
             </td>
           </tr>
+        </table>
+      </form>
+    </div>
+  </section>
+</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="body">
+  <section>
+    <div class="form-container">
+      <h2 class="create">Create New Account</h2>
+      <hr />
+      <form #form="ngForm" (ngSubmit)="save(form)" novalidate>
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="customerName"
+          name="customerName"
+          class="form-control"
+          placeholder="Enter Your Full Name.."
+          [(ngModel)]="customer.customerName"
+          #customerName="ngModel"
+          minlength="3"
+          required
+        />
+        <div
+          *ngIf="
+            !customerName?.valid &&
+            (customerName?.dirty || customerName?.touched)
+          "
+        >
+          <span *ngIf="customerName.invalid" class="text-danger">
+            Please enter your full name
+          </span>
+          <span *ngIf="customerName.errors?.['minlength']" class="text-danger">
+            Name must be at least 3 characters long.
+          </span>
+        </div>
+
+        <label for="email">Email Address</label>
+        <input
+          type="text"
+          id="customerMail"
+          name="customerMail"
+          class="form-control"
+          placeholder="Enter Your Email Address.."
+          [(ngModel)]="customer.customerMail"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          required
+          customerMail
+          #customerMail="ngModel"
+        />
+        <div
+          *ngIf="
+            !customerMail?.valid &&
+            (customerMail?.dirty || customerMail?.touched)
+          "
+        >
+          <span *ngIf=" customerMail.errors?.['required']" class="text-danger">
+            Please enter your email
+          </span>
+          <span *ngIf="customerMail.errors?.['email']" class="text-danger">
+            Invalid email
+          </span>
+          <span *ngIf="customerMail.errors?.['pattern']" class="text-danger">
+            Invalid Email Address
+          </span>
+        </div>
+
+        <label for="Mobile Number">Mobile Number</label>
+        <input
+          type="text"
+          id="customerPhno"
+          name="customerPhno"
+          class="form-control"
+          placeholder="Enter Mobile Number..."
+          [(ngModel)]="customer.customerPhno"
+          minlength="10"
+          maxlength="10"
+          pattern="^[6-9][0-9]{9}$"
+          required
+          customerPhno
+          #customerPhno="ngModel"
+        />
+        <div
+          *ngIf="
+            !customerPhno?.valid &&
+            (customerPhno?.dirty || customerPhno?.touched)
+          "
+        >
+          <span *ngIf=" customerPhno.errors?.['required']" class="text-danger">
+            Please enter your mobilenumber
+          </span>
+          <span
+            *ngIfElse="customerPhno.errors?.['pattern']"
+            class="text-danger"
+          >
+            <!-- Please enter valid mobile Number -->
+            Please Enter 10 digit Mobile Number
+          </span>
+          <span *ngIf="customerPhno.errors?.['minlength']" class="text-danger">
+            Mobile Number should be min 10 digits
+          </span>
+          <span *ngIf="customerPhno.errors?.['maxlength']" class="text-danger">
+            Mobile Number should be max 10 digits
+          </span>
+        </div>
+        <div class="password-input-wrapper">
+          <label for="password">Password</label>
+          <div class="password-input-group">
+            <input
+              type="{{ showPassword ? 'text' : 'password' }}"
+              id="password"
+              name="password"
+              placeholder="Enter Password..."
+              [(ngModel)]="customer.password"
+              required
+              #password="ngModel"
+              [style.width.px]="passwordWidth"
+            />
+            <span class="password-toggle-icon" (click)="togglePassword()">
+              <i
+                class="fa"
+                [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"
+              ></i>
+            </span>
+          </div>
+          <div
+            *ngIf="!password?.valid && (password?.dirty || password?.touched)"
+          >
+            <span *ngIf="password.errors?.['required']" class="text-danger">
+              Please enter your password
+            </span>
+          </div>
+        </div>
+
+        <table>
+          <tr>
+            <td>
+              <label for="street">Street</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter The Street.."
+                [(ngModel)]="customer.customerlocation!.street"
+                required
+                #street="ngModel"
+              />
+              <div *ngIf="!street?.valid && (street?.dirty || street?.touched)">
+                <span *ngIf="street.errors?.['required']" class="text-danger">
+                  Please enter your street
+                </span>
+              </div>
+            </td>
+            <td>
+              <label for="city">City</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter The City.."
+                [(ngModel)]="customer.customerlocation!.city"
+                required
+                #city="ngModel"
+              />
+              <div *ngIf="!city?.valid && (city?.dirty || city?.touched)">
+                <span *ngIf="city.errors?.['required']" class="text-danger">
+                  Please enter your city
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="pincode">Pincode</label>
+              <input
+                type="text"
+                id="number"
+                name="pincode"
+                placeholder="Enter The Pincode.."
+                [(ngModel)]="customer.customerlocation!.pinCode"
+                required
+                #pinCode="ngModel"
+                minlength="6"
+                maxlength="6"
+                pattern="^[1-9][0-9]{5}$"
+              />
+              <div
+                *ngIf="!pinCode?.valid && (pinCode?.dirty || pinCode?.touched)"
+              >
+                <span *ngIf="pinCode.errors?.['required']" class="text-danger">
+                  Please enter your pincode
+                </span>
+                <span
+                  *ngIf="pinCode.errors?.['pattern']"
+                  class="text-danger"
+                >
+
+                  Please Enter 6 digit pincode
+                </span>
+                <span
+                  *ngIf="pinCode.errors?.['minlength']"
+                  class="text-danger"
+                >
+                  pincode should be min 6 digits
+                </span>
+                <span
+                  *ngIf="pinCode.errors?.['maxlength']"
+                  class="text-danger"
+                >
+                pincode should be max 6 digits
+                </span>
+              </div>
+            </td>
+            <td>
+              <label for="state">State</label>
+              <input
+                type="text"
+                id="state"
+                name="state"
+                placeholder="Enter The state.."
+                [(ngModel)]="customer.customerlocation!.state"
+                required
+                #state = "ngModel"
+              />
+              <div *ngIf="!state?.valid && (state?.dirty || state?.touched)">
+                <span *ngIf="state.errors?.['required']" class="text-danger">
+                  Please enter your state
+                </span>
+              </div>
+            </td>
+            <td>
+              <label for="country">Country</label>
+              <input
+                type="text"
+                id="country"
+                name="country"
+                placeholder="Enter The country.."
+                [(ngModel)]="customer.customerlocation!.country"
+                required
+                #country="ngModel"
+              />
+              <div *ngIf="!country?.valid && (country?.dirty || country?.touched)">
+                <span *ngIf="country.errors?.['required']" class="text-danger">
+                  Please enter your country
+                </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="reset" class="sub" routerLink="/signup">Reset</button>
+              <button type="submit" class="sub">Signup</button>
+
+            </td>
+
+          </tr>
+          <td></td>
+          <a href="/signin" area-lable="Already have an account?">Already have an account ?</a>
         </table>
       </form>
     </div>

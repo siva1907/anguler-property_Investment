@@ -14,16 +14,23 @@ export class OrderconfirmationComponent {
   order?:PropertyOrder = new PropertyOrder();
 
   constructor(private orderRepository: OrderRepository) {
+
     this.loadOrders();
+    
   }
 
   loadOrders() {
+
     this.orderRepository.loadOrders();
     this.orders1 = this.orderRepository.getOrders();
+
   }
+
   get orders():PropertyOrder[]{
+
     console.log(this.orders1)
     return this.orderRepository.getOrders();
+
   }
   getOrderTotal(order: PropertyOrder) {
     return order.noOfUnits! * order.orderPrice!;
@@ -31,7 +38,7 @@ export class OrderconfirmationComponent {
   confirmDeleteOrder(orderId: number) {
     if (window.confirm('Are you sure you want to cancel this order?')) {
       this.deleteOrder(orderId);
-    }
+    }  
   }
   deleteOrder(orderId:number){
     this.orderRepository.deleteOrder(orderId);

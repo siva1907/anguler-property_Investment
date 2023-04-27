@@ -15,7 +15,9 @@ export class Property {
       public admins?:Admin[],
       public status?: string,
       public modifiedOn?:string,
-      public propertyLocation?: PropertyLocation
+      public propertyLocation?: PropertyLocation,
+      public yield_value  ?:number,
+      public blockedUnits?:number
       ) { }
 }
 

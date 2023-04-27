@@ -15,7 +15,10 @@ export class PropertyComponent  {
   public props?:Property[];
   public names?:String[];
 
+  public sortBy?:String="Most Blocked By Users";
+
   get cities():String[]|any
+  
   {
     //filter((value,index,self)=>self.indexOf(value)===index)
    return this.repository.getProperties().map(e=>e.propertyLocation?.city?.toLocaleLowerCase()).filter((value,index,self)=>self.indexOf(value)===index);
@@ -33,8 +36,27 @@ else{
     this.props=this.repository.getProperties().filter(p=>p.propertyLocation?.city?.toLocaleLowerCase()===this.filterText.toLocaleLowerCase())
 
   }
+  //...................................
+
+  if(this.sortBy==="Share Value")
+  {
+   this.props.sort((a, b) => a.shareVal! - b.shareVal!)
+
+  }
+  else if(this.sortBy==="Remining Units")
+  {
+    this.props.sort((a, b) => a.remainingUnits! - b.remainingUnits!);
+  }
+  else if(this.sortBy==="Most Blocked By Users") {
+
+    this.props.sort((a, b) => a.blockedUnits! - b.blockedUnits!);
+  }
+
+
+
   return this.props;
   }
+
 
 
   get customer(): Customer {

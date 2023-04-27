@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class GraphComponent implements OnInit{
     propertyReport!:any;
+    pid?:number;
     
    
     constructor(
@@ -26,7 +27,10 @@ export class GraphComponent implements OnInit{
 
    
     ngOnInit() {
-        this.datasource.getProperty(this.activeRouter.snapshot.params["pid"]).subscribe(data=>{
+      this.pid=this.activeRouter.snapshot.params["id"];
+      console.log(this.pid);
+      
+        this.datasource.getProperty(this.pid!).subscribe(data=>{
           this.propertyReport=data
           console.log(data);
           

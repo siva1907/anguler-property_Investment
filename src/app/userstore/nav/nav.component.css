@@ -1,12 +1,13 @@
 .navbar {
   display: flex;
-  background-color: #150d013d;
+  background-color: #150d0100;;
   justify-content: space-between;
   height: fit-content;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
+  padding: 0;
 }
 
 

@@ -47,11 +47,11 @@ export class RestDataSource {
   }
 
   saveOrder(order: PropertyOrder,customerId:number,propertyId:number): Observable<PropertyOrder> {
-    return this.http.post<PropertyOrder>(  `http://localhost:8082/api/saveorder/customer/${customerId}/property/${propertyId}`, order);
+    return this.http.post<PropertyOrder>(  `http://localhost:8082/api/saveorder/customer/${customerId}/property/${propertyId}`,order);
   }
 
   getOrders(): Observable<PropertyOrder[]> {
-    return this.http.get<PropertyOrder[]>( 'http://localhost:8082/api/allorders');
+    return this.http.get<PropertyOrder[]>( `http://localhost:8082/api/allorders`);
   }
   getOrderByCid(id:number): Observable<PropertyOrder[]> {
     return this.http.get<PropertyOrder[]>( `http://localhost:8082/api/bycustomer/${id}`);

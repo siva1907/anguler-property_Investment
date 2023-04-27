@@ -141,3 +141,23 @@ padding: 1rem;
     justify-content: center;
     margin-top: 3rem;
 }
+.graph
+{
+  position: relative;
+  height: 3rem;
+  width: fit-content;
+  margin-left: 10rem;
+}
+.heading
+{
+  display: none;
+}
+.col-lg-4{
+  width: 150%;
+}
+.addressgraph{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+}

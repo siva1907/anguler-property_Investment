@@ -1,17 +1,120 @@
 
-<home-nav> </home-nav>
+<!-- <home-nav> </home-nav>
 <br><br><br><br><br>
-<div>
+<div> -->
 <!-- <input type="text" placeholder="Search by location"
 style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
 > -->
-<select [(ngModel)]="filterText">
-  <option *ngFor="let city of cities" value="{{city}}" >{{city}}</option>
+<!-- <select [(ngModel)]="filterText">
+ <span>location</span>
+  <option [defaultSelected]="" value="">All Cities</option>
 
+  <option *ngFor="let city of cities" value="{{city}}"  >{{city}}</option>
 </select>
 </div>
 
 <div class="bdy">
+
+  <div class="maincard"> -->
+    <!-- loop through properties using ngFor directive -->
+    <!-- <div class="card card1" *ngFor="let property of properties">
+      <h1 class="title">{{ property?.name }}</h1>
+      <div class="title">
+        <i class="fas fa-map-marker-alt"></i>
+        {{ property.propertyLocation?.city }}
+      </div>
+      <img
+        class="card-img-top"
+        src="{{ property.imageUrl }}"
+        alt="Card image cap"
+      />
+      <div class="div1">
+        <div><i class="far fa-building"></i> Area</div>
+        <div class="propertyvalues">{{ property.area }} m<sup>2</sup></div>
+      </div>
+      <div class="div1">
+        <div><i class="fas fa-coins"></i> TotalCost</div>
+        <div class="propertyvalues">{{ property.totalCost | currency : "INR" : "symbol"}}</div>
+      </div>
+      <div class="div1">
+        <div><i class="fas fa-chart-line"></i> ShareValue</div>
+        <div class="propertyvalues">{{ property.shareVal | currency : "INR" : "symbol"  }}</div>
+      </div>
+      <div class="div1">
+        <div><i class='fas fa-hand-holding-usd'></i>Yeild</div>
+        <div class="propertyvalues">{{ property. yield_value }}%</div>
+      </div>
+      <div class="div1">
+        <div><i class="fa fa-window-close-o"></i>Blocking Units</div>
+        <div class="propertyvalues">{{ property.blockedunits }}</div>
+      </div>
+
+      <div class="butt">
+        <button
+          type="button"
+          class="btn btn-primary"
+          *ngIf="customer != null"
+          [ngClass]="{ 'btn-danger': property.remainingUnits == 0 }"
+          [routerLink]="['/home', property.id]"
+        >
+          {{ property.remainingUnits === 0 ? 'Fully Funded' : 'View Opportunities' }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          *ngIf="customer == null"
+          routerLink="/signin"
+        >
+          View Opportunities
+        </button>
+</div>
+    </div>
+  </div>
+</div>
+<footer-nav></footer-nav> -->
+
+
+
+<home-nav> </home-nav>
+<div class="bdy">
+  <div class="propshare-page-benner-container">
+    <div class="cover-img-wrapper">
+      <img
+        class="cover-img"
+        src="https://media2.propertyshare.in/images/static_page_banner/propertylist_features.jpg"
+        alt="property listing cover page"
+      />
+      <!-- <div class="cover-content">
+            <h6 class="title">All Properties</h6>
+        </div> -->
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="properties-filter-inner-wrapper" style="flex-direction: row; padding-left: 50px;">
+
+      
+      <select [(ngModel)]="filterText" style="padding-left: 50px;">
+      
+       
+         <option [defaultSelected]="" value="">All Cities</option>
+         <option *ngFor="let city of cities" value="{{city}}"  >{{city}}</option>
+       </select>
+
+
+       <select [(ngModel)]="sortBy" style="padding-left: 50px;">
+        <option  value="Share Value">Share Value</option>
+        <option value="Remining Units">Remining Units</option>
+        <option [defaultSelected]="sortBy" value="Most Blocked By Users" >Most Blocked By Users</option>
+       </select>
+
+      <div class="filter_block_wrapper"></div>
+
+
+
+      
+    </div>
+  </div>
 
   <div class="maincard">
     <!-- loop through properties using ngFor directive -->
@@ -27,16 +130,20 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
         alt="Card image cap"
       />
       <div class="div1">
-        <div><i class="far fa-building"></i> area</div>
+        <div><i class="far fa-building"></i> Area</div>
         <div class="propertyvalues">{{ property.area }} m<sup>2</sup></div>
       </div>
       <div class="div1">
-        <div><i class="fas fa-coins"></i> TotalCost</div>
-        <div class="propertyvalues">{{ property.totalCost | currency : "INR" : "symbol"}}</div>
+        <div><i class="fas fa-coins"></i> Total Cost</div>
+        <div class="propertyvalues">
+          {{ property.totalCost | currency : "INR" : "symbol" }}
+        </div>
       </div>
       <div class="div1">
-        <div><i class="fas fa-chart-line"></i> ShareValue</div>
-        <div class="propertyvalues">{{ property.shareVal | currency : "INR" : "symbol"  }}</div>
+        <div><i class="fas fa-chart-line"></i> Share Value</div>
+        <div class="propertyvalues">
+          {{ property.shareVal | currency : "INR" : "symbol" }}
+        </div>
       </div>
       <div class="butt">
         <button
