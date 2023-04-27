@@ -94,20 +94,20 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
     <div class="properties-filter-inner-wrapper" style="flex-direction: row; padding-left: 50px;">
 
       
-      <select [(ngModel)]="filterText" style="padding-left: 50px;">
+      <select [(ngModel)]="filterText" style="padding-left: 50px;border: none;">
       
        
-         <option [defaultSelected]="" value="">All Cities</option>
-         <option *ngFor="let city of cities" value="{{city}}"  >{{city}}</option>
+         <option style="border: none;" [defaultSelected]="" value="">All Cities</option>
+         <option style="border: none;" *ngFor="let city of cities" value="{{city}}"  >{{city}}</option>
        </select>
 
 
-       <select [(ngModel)]="sortBy" style="padding-left: 50px;">
-        <option  value="Share Value">Share Value</option>
-        <option value="Remining Units">Remining Units</option>
-        <option [defaultSelected]="sortBy" value="Most Blocked By Users" >Most Blocked By Users</option>
+       <select [(ngModel)]="sortBy" style="padding-left: 50px; border: none;">
+        <option style="border: none;" value="Share Value">Share Value</option>
+        <option style="border: none;" value="Remining Units">Remining Units</option>
+        <option [defaultSelected]="sortBy" value="Most Blocked By Users" >Most Blocked</option>
        </select>
-
+       <input type="text" [(ngModel)]="searchByName" style="width: 40rem;" placeholder="Search Property here  🔎">
       <div class="filter_block_wrapper"></div>
 
 

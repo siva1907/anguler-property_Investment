@@ -3,6 +3,7 @@ import { PropertyOrder } from "./order.model";
 //import { StaticDataSource } from "./static.datasource";
 import { RestDataSource } from "./rest.datasource";
 import { Customer } from "./customer.model";
+import { Subscription } from "rxjs";
 
 @Injectable()
 export class OrderRepository {
@@ -14,6 +15,8 @@ export class OrderRepository {
   private customerId?: number;
   private customerOrders?: PropertyOrder[] = [];
   private customerOrdersById?: PropertyOrder[] = [];
+
+  stopSubscription?: Subscription;
   // private customer?:Customer
   constructor(private dataSource: RestDataSource) { }
 
@@ -37,11 +40,18 @@ export class OrderRepository {
   }
 
   getOrdersByCustId(id: number): PropertyOrder[] | undefined {
-    this.dataSource.getOrderByCid(id)
-
-      .subscribe(orders => this.customerOrdersById = orders);
+    if(!this.stopSubscription){
+     this.stopSubscription= this.dataSource.getOrderByCid(id).subscribe(orders => this.customerOrdersById = orders);
+    }
     return this.customerOrdersById;
 
+  }
+  unSubscribe(){
+    if(this.stopSubscription){
+        this.stopSubscription.unsubscribe();
+        this.customerOrdersById = [];
+        this.stopSubscription = undefined
+    }
   }
 
   saveOrder(order: PropertyOrder, customerId: number, propertyId: number) {
@@ -65,6 +75,12 @@ export class OrderRepository {
 
   deleteOrder(id: number) {
     this.dataSource.deleteOrder(id).subscribe(order => {
+      this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
+    });
+  }
+
+  sell(id: number) {
+    this.dataSource.sell(id).subscribe(order => {
       this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
     });
   }

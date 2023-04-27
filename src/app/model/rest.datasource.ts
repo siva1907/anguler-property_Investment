@@ -59,6 +59,9 @@ export class RestDataSource {
   deleteOrder(id: number): Observable<PropertyOrder> {
     return this.http.delete<PropertyOrder>(`http://localhost:8082/api/order/delete/${id}`);
   }
+  sell(id:number ): Observable<PropertyOrder> {
+    return this.http.put<PropertyOrder>(`http://localhost:8082/api/order/sell/${id}`,null);
+  }
 
   updateOrder(order: PropertyOrder,cid:number,pid:number): Observable<PropertyOrder> {
     return this.http.put<PropertyOrder>(

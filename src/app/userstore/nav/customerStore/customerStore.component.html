@@ -3,7 +3,7 @@
   <div class="maincard">
     
     <!-- loop through properties using ngFor directive -->
-    <div class="card card1" *ngFor="let order of props ; let i = index">
+    <div class="card card1" *ngFor="let order of customerOrders ; let i = index">
       <h1 class="title">{{ order.propertyId?.name }}</h1>
       <div class="title">
         <i class="fas fa-map-marker-alt"></i>
@@ -37,8 +37,8 @@
             (click)="sell(order.orderId)"
           >
             sell
-          </button>
-        
+          </button> 
       </div>
+      
     </div>
   </div>

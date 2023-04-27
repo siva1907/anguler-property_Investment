@@ -14,6 +14,7 @@ export class PropertyComponent  {
   constructor(private repository: PropertyRepositary,private customerRepo: CustomerSigninRepository) { }
   public props?:Property[];
   public names?:String[];
+  public searchByName?:string='';
 
   public sortBy?:String="Most Blocked By Users";
 
@@ -51,7 +52,10 @@ else{
 
     this.props.sort((a, b) => a.blockedUnits! - b.blockedUnits!);
   }
-
+if(this.searchByName!='')
+{
+this.props=this.repository.getProperties().filter(p=>p.name?.toLocaleLowerCase().match(this.searchByName!.toLocaleLowerCase().trim()))
+}
 
 
   return this.props;

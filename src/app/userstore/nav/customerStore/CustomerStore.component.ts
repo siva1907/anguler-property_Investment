@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/model/customer.model';
 import { CustomerSigninRepository } from 'src/app/model/customerSignIn.repository';
@@ -12,32 +12,34 @@ import { OrderRepository } from 'src/app/model/order.repository';
     styleUrls:['customerStore.component.css']
     
 })
-export class CustomerStoreComponent {
+export class CustomerStoreComponent implements OnDestroy{
     constructor(
        private custlogin:CustomerSigninRepository,private orderRepo:OrderRepository ,private activeRouter:ActivatedRoute
     ) {
-        console.log(this.custlogin.customer?.id!);
+        // console.log(this.custlogin.customer?.id!);
     
-        this.props= this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!);
-        console.log(this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!));
+        // this.props= this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!);
+        // console.log(this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!));
         
      }
 
    public custorders?:Customer;
    public props?:PropertyOrder[];
 
-//  get customerOrders():PropertyOrder[] | undefined{
-//     // console.log("entering");
-//     // console.log(this.activeRouter.snapshot.params["id"]);
-//     console.log(this.custlogin.customer);
+ get customerOrders():PropertyOrder[] | undefined{
+
+    this.props= this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!);
+    return this.props
     
-//    this.props= this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!);
-// //    console.log(this.props)
-//    return this.props;
-   
-// }
+}
+
+ngOnDestroy(): void {
+    this.orderRepo.unSubscribe();
+}
+
+
 sell(id:number|any){
-    this.orderRepo.deleteOrder(id);
+    this.orderRepo.sell(id);
     this.props?.splice( this.props.findIndex(o => id == o.orderId),1)
 }
 
