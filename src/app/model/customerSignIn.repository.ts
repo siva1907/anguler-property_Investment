@@ -60,7 +60,6 @@ export class CustomerSigninRepository {
   }
 
   getLogedInCustomer(): Customer {
-    console.log(this.customer);
     return  this.customer!;
   }
 

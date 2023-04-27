@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { PropertyOrder } from "./order.model";
 //import { StaticDataSource } from "./static.datasource";
 import { RestDataSource } from "./rest.datasource";
+import { Customer } from "./customer.model";
 
 @Injectable()
 export class OrderRepository {
@@ -11,6 +12,8 @@ export class OrderRepository {
     private updatingOrder?: PropertyOrder;
     private propertyId?:number;
     private customerId?:number;
+    private customerOrders?:PropertyOrder[] = [];
+    // private customer?:Customer
     constructor(private dataSource: RestDataSource) { }
 
     loadOrders() {
@@ -18,7 +21,13 @@ export class OrderRepository {
         this.dataSource.getOrders()
             .subscribe(orders => this.orders = orders);
     }
+     loadCustOrsers(id:number)
+     {
+      this.loaded = true;
+       
 
+      
+     }
     getOrders(): PropertyOrder[] {
         if (!this.loaded) {
             this.loadOrders();
@@ -44,7 +53,7 @@ export class OrderRepository {
     }
 
 
-deleteOrder(id: number) {
+  deleteOrder(id: number) {
   this.dataSource.deleteOrder(id).subscribe(order => {
       this.orders.splice(this.orders.findIndex(o => id == o.orderId));
   });
@@ -54,4 +63,14 @@ getOrderById(id:number):PropertyOrder| undefined{
 
   return this.orders.find(order => order.orderId == id);
 }
+getByCustomer(id:number):PropertyOrder[]|any{
+  
+  this.dataSource.getOrderByCid(id)
+  
+ .subscribe(orders => this.customerOrders = orders);
+
+ return this.customerOrders;
+
+}
+
 }

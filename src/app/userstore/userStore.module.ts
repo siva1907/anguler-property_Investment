@@ -12,13 +12,14 @@ import { FooterComponent } from "./footer/footer.component";
 import { GraphComponent } from "../graph/graph.comoponent";
 import { CarouselComponent } from "./nav/carousel/carousel.component";
 import { ModelModule } from "../model/model.module";
+import { CustomerStoreComponent } from "./nav/customerStore/CustomerStore.component";
 
 
 
 
 @NgModule({
     imports: [CommonModule, FormsModule,RouterModule,ModelModule],
-    declarations: [PropertyComponent,ViewComponent,NavComponent, AboutComponent, ContactComponent,FooterComponent,GraphComponent,CarouselComponent],
-    exports: [GraphComponent,CarouselComponent]
+    declarations: [PropertyComponent,ViewComponent,NavComponent, AboutComponent, ContactComponent,FooterComponent,GraphComponent,CarouselComponent,CustomerStoreComponent],
+    exports: [GraphComponent,CarouselComponent,CustomerStoreComponent]
 })
 export class PropertyModule {}

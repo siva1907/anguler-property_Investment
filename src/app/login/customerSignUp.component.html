@@ -3,8 +3,8 @@
     <div class="form-container">
       <h2 class="create">Create New Account</h2>
       <hr />
-      <form #form="ngForm" (ngSubmit)="form.valid && save(form)">
-        <label for="name"></label>
+      <form #form="ngForm" (ngSubmit)="save(form)">
+        <label for="name">Full Name</label>
 
         <input
           type="text"
@@ -15,7 +15,7 @@
           required
         />
 
-        <label for="email"></label>
+        <label for="email">Email</label>
         <input
           type="text"
           id="email"
@@ -26,7 +26,7 @@
           required
         />
 
-        <label for="Enter Mobile Number"></label>
+        <label for="Enter Mobile Number">Mobile Number</label>
         <input
           type="text"
           id="customerPhno"
@@ -35,7 +35,7 @@
           [(ngModel)]="phoneNumber"
         />
 
-        <label for="password"></label>
+        <label for="password">Password</label>
         <input
           type="password"
           id="password"
@@ -51,6 +51,7 @@
         <table>
           <tr>
             <td>
+              <label for="location">street</label>
               <input
                 type="text"
                 id="location"
@@ -60,6 +61,7 @@
               />
             </td>
             <td>
+              <label for="city">Email</label>
               <input
                 type="text"
                 id="city"
@@ -71,6 +73,7 @@
           </tr>
           <tr>
             <td>
+              <label for="pincode">Email</label>
               <input
                 type="text"
                 id="number"
@@ -80,6 +83,7 @@
               />
             </td>
             <td>
+              <label for="state">Email</label>
               <input
                 type="text"
                 id="state"
@@ -89,6 +93,7 @@
               />
             </td>
             <td>
+              <label for="country">Email</label>
               <input
                 type="text"
                 id="country"
@@ -102,7 +107,7 @@
             <td></td>
             <td>
               <button type="submit" class="sub">Signup</button>
-              <button routerLink="/signin" class="sub">back</button>
+              <button routerLink="/signin" class="sub" >back</button>
             </td>
           </tr>
         </table>

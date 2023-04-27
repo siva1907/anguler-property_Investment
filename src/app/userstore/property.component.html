@@ -1,5 +1,16 @@
 
 <home-nav> </home-nav>
+<br><br><br><br><br>
+<div>
+<!-- <input type="text" placeholder="Search by location"
+style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
+> -->
+<select [(ngModel)]="filterText">
+  <option *ngFor="let city of cities" value="{{city}}" >{{city}}</option>
+
+</select>
+</div>
+
 <div class="bdy">
 
   <div class="maincard">

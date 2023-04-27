@@ -29,7 +29,7 @@ export class NavComponent {
 
   viewCustomer()
   {
-    this.rout.navigateByUrl(`/orders/${this.customer.id}`);
+    this.rout.navigateByUrl(`/orders`);
   }
 
   showDropdown() {
@@ -42,6 +42,10 @@ export class NavComponent {
 
   removeCustomer(){
     this.customerRepo.logOutCustomer();
+  }
+
+  holdDropdown(){
+    this.isDropdownVisible = true;
   }
 
 }

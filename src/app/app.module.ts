@@ -18,6 +18,7 @@ import { PropertyModule } from './userstore/userStore.module';
 import { OrderconfirmationComponent } from './admin/orderconfirmation/orderConfirmation.component';
 import { GraphComponent } from './graph/graph.comoponent';
 import { CarouselComponent } from './userstore/nav/carousel/carousel.component';
+import { CustomerStoreComponent } from './userstore/nav/customerStore/CustomerStore.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -52,6 +53,7 @@ import { CarouselComponent } from './userstore/nav/carousel/carousel.component';
         path: 'contact',
         component: ContactComponent,
       },
+      {path:'orders',component:CustomerStoreComponent},
 
       { path: '**', redirectTo: '/start' },
     ]),

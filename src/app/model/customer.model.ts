@@ -8,7 +8,7 @@ export class Customer{
     public customerPhno?:number,
     public password?:string,
     public customerlocation?:CustomerLocation,
-    public orderIds?:PropertyOrder,
+    public orderIds?:PropertyOrder[],
   )
   {}
 }
