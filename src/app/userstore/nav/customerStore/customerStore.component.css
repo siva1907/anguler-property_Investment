@@ -49,8 +49,73 @@
     margin-left: 5rem;
   }
   
-  .butt {
+  .button {
     text-align: center;
     margin: 30px;
   }
   
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.pro {
+  color: rgb(86, 84, 84);
+  padding: 0.5rem;
+  font-family:  math;
+  width: 30%;
+
+}
+.popup button{
+  width: 100%;
+  margin-top: 6rem;
+  padding: 10px 0;
+  background: #6fd649;
+  color: #fff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 5 px rgba(0,0, 0, 0.2);
+}
+.pro {
+  color: rgb(86, 84, 84);
+  padding: 0.5rem;
+  font-family:  math;
+  width: 30%;
+
+}
+.error {
+  color: red;
+  padding: 0.3rem;
+}
+  
+.popup{
+
+  background: #fff;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%,-50%); */
+  text-align: center;
+  padding:0  30px 30px ;
+  color: #333;
+  width: 22rem;
+  height: 30rem;
+
+}
+.content{
+  background-color: white;
+  width: 22rem;
+  height: fit-content;
+padding: 1rem;
+}

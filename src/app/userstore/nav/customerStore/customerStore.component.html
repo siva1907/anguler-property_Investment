@@ -1,44 +1,98 @@
 <home-nav></home-nav>
 <div class="heading">Your Orders</div>
-  <div class="maincard">
-    
-    <!-- loop through properties using ngFor directive -->
-    <div class="card card1" *ngFor="let order of customerOrders ; let i = index">
-      <h1 class="title">{{ order.propertyId?.name }}</h1>
-      <div class="title">
-        <i class="fas fa-map-marker-alt"></i>
-        {{ order.propertyId?.propertyLocation?.city }}
-      </div>
-      <img
-        class="card-img-top"
-        src="{{ order.propertyId?.imageUrl }}"
-        alt="Card image cap"
-      />
-      <div class="div1">
-        <div><i class="far fa-building"></i>units purchased</div>
-        <div class="propertyvalues">{{ order.noOfUnits }} m<sup>2</sup></div>
-      </div>
-      <div class="div1">
-        <div><i class="fas fa-coins"></i> Order Date</div>
-        <div class="propertyvalues">{{ order.orderDate | date }}</div>
-      </div>
-      <div class="div1">
-        <div><i class="fas fa-coins"></i> Order Price</div>
-        <div class="propertyvalues">{{ order.orderPrice | currency : "INR" : "symbol" : "4.2-2" }}</div>
-      
-      </div>
-      <div class="div1" *ngIf="order.orderStatus=='pending'">Status
+<div class="maincard">
+
+  <!-- loop through properties using ngFor directive -->
+  <div class="card card1" *ngFor="let order of customerOrders ; let i = index">
+    <h1 class="title">{{ order.propertyId?.name }}</h1>
+    <div class="title">
+      <i class="fas fa-map-marker-alt"></i>
+      {{ order.propertyId?.propertyLocation?.city }}
+    </div>
+    <img class="card-img-top" src="{{ order.propertyId?.imageUrl }}" alt="Card image cap" />
+    <div class="div1">
+      <div><i class="far fa-building"></i>units purchased</div>
+      <div class="propertyvalues">{{ order.noOfUnits }} </div>
+    </div>
+    <div class="div1">
+      <div><i class="fas fa-coins"></i> Order Date</div>
+      <div class="propertyvalues">{{ order.orderDate | date }}</div>
+    </div>
+    <div class="div1">
+      <div><i class="fas fa-coins"></i> Order Price</div>
+      <div class="propertyvalues">{{ order.orderPrice | currency : "INR" : "symbol" : "4.2-2" }}</div>
+
+    </div>
+    <div class="div1" *ngIf="order.orderStatus=='pending'">Status
       <div class="propertyvalues" style="color: red;">{{order.orderStatus}}</div>
     </div>
-      <div class="butt">
-        <button
-            class="btn btn-warning btn-lg view"
-            style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'"
-            (click)="sell(order.orderId)"
-          >
-            sell
-          </button> 
+    <div class="button">
+      <button class="btn btn-warning btn-lg view" data-toggle="model" data-target="#investmentInitModal"
+        style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'" (click)="openpop(order.propertyId?.id!)">
+        sell
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<div>
+  <div class="overlay" *ngIf="show">
+    <div class="content">
+      <div class="close" (click)="closepop()" style="cursor: pointer">
+        &times;
       </div>
-      
+      <div>
+        <strong>{{ property.name }}</strong><br />
+        <div>
+          {{order | json}}
+          Required Units:{{order.noOfUnits}}
+          <input class="no-arrows unitInput" type="number" #units="ngModel" [(ngModel)]="order.noOfUnits" [min]="1"
+            [max]="ordunits!" required />
+
+          <div *ngIf="units.touched && units.invalid" class="error"> Please enter the required units</div>
+          <div *ngIf="units.errors?.['min']" class="error">
+            * Please enter at least 1 unit
+          </div>
+          <div *ngIf="units.errors?.['max']" class="error">
+            * Maximum allowed units is {{ordunits}}
+          </div>
+        </div>
+
+
+
+
+        OrderPrice<span style="color: red">
+          {{
+          order.noOfUnits! * order.propertyId?.shareVal! | currency : "INR" : "symbol"
+          }}</span>
+      </div>
+
+      <button type="button" [className]="color"
+        *ngIf="order.propertyId?.shareVal! != 0 &&  !units.invalid && !units.errors?.['min'] && !units.errors?.['max']"
+        style="text-align: center; margin-top: 1rem" (click)="bookProperty()">
+        {{ isSell ? "Sell" : "Sell" }}
+      </button>
+      <button class="btn btn-primary" style="margin-left: 2rem; margin-top: 1rem" (click)="closepop()"
+        routerLink="/home">
+        Cancel
+      </button>
+      <div class="cont">
+        <div *ngIf="isSell" class="popup">
+          <div class="img">
+            <img src="https://th.bing.com/th/id/OIP.c5Ae2jEhX7I8V7cQWxH68wHaHa?pid=ImgDet&w=195&h=195&c=7&dpr=1.5" />
+          </div>
+          <h2>Thank You!</h2>
+          <p>
+            Thank you for placing the order, our team representative will contact you once
+            the order is confirmed
+          </p>
+          <button type="button" (click)="closepop()" routerLink="/home">
+            OK
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+</div>

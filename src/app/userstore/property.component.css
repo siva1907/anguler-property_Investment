@@ -96,3 +96,37 @@ img {
   text-align: center;
   margin: 30px;
 }
+
+.search{
+  display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.search:focus{
+  outline: none;
+}
+
+.operation{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.city:focus{
+  outline: none;
+}
+
+.sort:focus{
+  outline: none;
+}
+
+input:focus{
+  outline: none;
+}
+
+input{
+  border:solid 1px rgb(228, 227, 227);
+  border-radius: 5px;
+}
+
+

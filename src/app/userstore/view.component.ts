@@ -24,8 +24,6 @@ export class ViewComponent {
   order: PropertyOrder = new PropertyOrder();
   property: Property = new Property();
   customer?: Customer = new Customer();
-
-
   orderForm: FormGroup;
   constructor(
     private repository: PropertyRepositary,
