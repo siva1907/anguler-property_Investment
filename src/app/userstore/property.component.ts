@@ -51,6 +51,9 @@ else{
   else if(this.sortBy==="Most Blocked By Users") {
 
     this.props.sort((a, b) => a.blockedUnits! - b.blockedUnits!);
+  }else if(this.sortBy==="Yeild")
+  {
+    this.props.sort((a, b) => b.yield_value! - a.yield_value!); 
   }
 if(this.searchByName!='')
 {

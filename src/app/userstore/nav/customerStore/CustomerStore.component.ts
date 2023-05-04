@@ -75,23 +75,26 @@ export class CustomerStoreComponent implements OnDestroy {
     saveOrder() {
         
         
-        this.orderRepository.saveOrder(this.order,this.logedInCustomer.id!,this.property.id!);
+        this.orderRepository.sell(this.order);
     
       }
     show=false;
 
-    get orderById()
-    {
-      return this.props?.find((prop)=>prop.propertyId?.id!=this.id)
-    }
-    openpop(id:number) {
+    // get orderById()
+    // {
+    //   //  this.id=id;
+    //     this.order.orderStatus='approved';
+    //     this.order.orderPrice=this.order.noOfUnits!*this.order.propertyId?.shareVal!;
+       
+    //   return this.props?.find((prop)=>prop.propertyId?.id!=this.id)
+    // }
+    openpop(orders:PropertyOrder) {
         this.show = true;
-        this.id=id;
-        // this.order.orderStatus='approved';
-        // this.order.orderPrice=this.order.noOfUnits!*this.order.propertyId?.shareVal!;
-        // this.order.customerId=this.order.customerId;
-        // this.order.propertyId=this.order.propertyId;
-        this.ordunits=this.order.noOfUnits;
+       this.order=orders;
+        this.ordunits=orders.noOfUnits;
+        this.customer=this.order.customerId;
+        //this.property=this.order.propertyId;
+
       
       }
     
@@ -99,7 +102,8 @@ export class CustomerStoreComponent implements OnDestroy {
         this.show = false;
         this.isSell=false;
     }
-    bookProperty() {
+    bookProperty(orders:PropertyOrder) {
+        this.order.noOfUnits= this.ordunits!-this.order.noOfUnits!;
         this.saveOrder();
         
         // this.color='btn btn-warning';

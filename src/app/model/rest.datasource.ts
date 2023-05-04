@@ -59,8 +59,16 @@ export class RestDataSource {
   deleteOrder(id: number): Observable<PropertyOrder> {
     return this.http.delete<PropertyOrder>(`http://localhost:8082/api/order/delete/${id}`);
   }
-  sell(id:number ): Observable<PropertyOrder> {
-    return this.http.put<PropertyOrder>(`http://localhost:8082/api/order/sell/${id}`,null);
+  sell(order: PropertyOrder ): Observable<PropertyOrder> {
+    if(order.noOfUnits!>0){
+    console.log(JSON.stringify(order)+"restdata");
+    
+    return this.http.put<PropertyOrder>(`http://localhost:8082/api/order/sell`,order);
+    }else{
+      console.log("delete");
+      
+     return this.deleteOrder(order.orderId!);
+    }
   }
 
   updateOrder(order: PropertyOrder,cid:number,pid:number): Observable<PropertyOrder> {

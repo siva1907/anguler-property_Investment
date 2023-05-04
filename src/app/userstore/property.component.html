@@ -99,6 +99,7 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
       <select [(ngModel)]="sortBy" style=" border: none;" class="sort">
         <option style="border: none;padding-bottom: 3px;" value="Share Value">Share Value</option>
         <option style="border: none;padding-bottom: 3px;" value="Remining Units">Remining Units</option>
+        <option style="border: none;padding-bottom: 3px;" value="Yeild">Yeild</option>
         <option [defaultSelected]="sortBy" value="Most Blocked By Users">Most Selling</option>
       </select>
 
@@ -124,13 +125,20 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
       </div>
       <img class="card-img-top" src="{{ property.imageUrl }}" alt="Card image cap" />
       <div class="div1">
-        <div><i class="far fa-building"></i> Area</div>
-        <div class="propertyvalues">{{ property.area }} m<sup>2</sup></div>
+        <div><i class="far fa-building"></i>   Area</div>
+        <div class="propertyvalues">{{ property.area }} <sup>SF</sup></div>
       </div>
       <div class="div1">
-        <div><i class="fas fa-coins"></i> Total Cost</div>
+        <div><i class="fas fa-exclamation-circle"></i> Blocked units</div>
         <div class="propertyvalues">
-          {{ property.totalCost | currency : "INR" : "symbol" }}
+          {{ property.blockedUnits  }}
+        </div>
+      </div>
+      
+      <div class="div1">
+        <div><i class="fas fa-balance-scale-left"></i> Yield</div>
+        <div class="propertyvalues">
+          {{ property.yield_value }}%
         </div>
       </div>
       <div class="div1">

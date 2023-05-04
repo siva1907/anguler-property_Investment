@@ -69,7 +69,7 @@ img {
   background-color: #fff;
   margin-bottom: 7rem;
   box-sizing: border-box;
-  height: 500px;
+  height: fit-content;
 }
 
 img {

@@ -1,7 +1,8 @@
 <admin-component></admin-component>
-<div style="position: absolute;top: 5rem;width: 100%;z-index: -1;">
+<div class="body">
+<div style="position: absolute; top: 5rem; width: 100%; z-index: -1">
   <div
-    style="width: 50%; margin: auto;z-index: 1;"
+    style="width: 50%; margin: auto; z-index: 1"
     class="bg-primary p-2 text-white"
     [class.bg-warning]="editing"
     [class.text-dark]="editing"
@@ -11,27 +12,85 @@
 
   <form
     novalidate
+    #propertyForm="ngForm"
     #form="ngForm"
     (ngSubmit)="save(form)"
     style="width: 50%; margin: auto"
   >
     <div class="form-group">
       <label>Name</label>
-      <input class="form-control" name="name" [(ngModel)]="property.name" />
+      <input
+        class="form-control"
+        name="name"
+        placeholder="Enter Property Name.."
+        [(ngModel)]="property.name"
+        required
+        #name="ngModel"
+        minlength="3"
+        maxlength="30"
+        ng-required="true"
+      />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <span *ngIf="name.errors?.['required']" class="text-danger"
+          >Please Enter Property Name</span
+        >
+        <span *ngIf="name.errors?.['minlength']" class="text-danger">
+          Name should be at least 3 characters long
+        </span>
+        <span *ngIf="name.errors?.['maxlength']" class="text-danger">
+          Name should not be more than 30 characters long
+        </span>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Area</label>
-      <input class="form-control" name="area" [(ngModel)]="property.area" />
+      <input
+        class="form-control"
+        name="area"
+        placeholder="Enter Area in Square Feet.."
+        [(ngModel)]="property.area"
+        required
+        #area="ngModel"
+        pattern="[0-9]+"
+        minlength="3"
+        maxlength="10"
+        ng-required="true"
+      />
+      <span
+        *ngIf="area.invalid && (area.dirty || area.touched)"
+        class="text-danger"
+      >
+        <span *ngIf="area.errors?.['required']">Area is required. </span>
+        <span *ngIf="area.errors?.['minlength']"
+          >Area must be at least 3 digits long.</span
+        >
+        <span *ngIf="area.errors?.['maxlength']"
+          >Area cannot be more than 10 digits long.</span
+        >
+        <span *ngIf="area.errors?.['pattern']">Area must be a number.</span>
+      </span>
     </div>
 
     <div class="form-group">
-      <label>Image Url</label>
+      <label>Image URL</label>
       <input
+        type="url"
         class="form-control"
         name="imageUrl"
+        placeholder="Place Image Url.."
         [(ngModel)]="property.imageUrl"
+        required
+        #imageUrl="ngModel"
+        pattern=""
+        ng-required="true"
       />
+      <span
+        class="error-message"
+        *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)"
+      >
+        Please enter a valid image URL starting with "http://" or "https://".
+      </span>
     </div>
 
     <div class="form-group">
@@ -39,17 +98,60 @@
       <input
         class="form-control"
         name="totalCost"
+        placeholder="Enter Total Cost.."
         [(ngModel)]="property.totalCost"
+        required
+        pattern="^[0-9]*$"
+        #totalCost="ngModel"
+        ng-required="true"
       />
+      <span
+        class="text-danger"
+        *ngIf="totalCost.invalid && (totalCost.dirty || totalCost.touched)"
+      >
+        <span *ngIf="totalCost.errors?.['required']"
+          >Total Cost is required.</span
+        >
+        <span *ngIf="totalCost.errors?.['pattern']"
+          >Total Cost must be a numeric value.</span
+        >
+      </span>
     </div>
 
+
     <div class="form-group">
-      <label>Share Val</label>
+      <label>Share Value</label>
       <input
         class="form-control"
         name="shareVal"
+        placeholder="Enter Share Value.."
         [(ngModel)]="property.shareVal"
+        required
+        type="number"
+        #shareVal="ngModel"
+        minlength="1"
+        maxlength="10"
+        ng-required="true"
       />
+      <span
+        class="text-danger"
+        *ngIf="shareVal.invalid && (shareVal.dirty || shareVal.touched)"
+      >
+        <span *ngIf="shareVal.errors?.['required']"
+          >Share Value is required.
+        </span>
+        <span *ngIf="shareVal.errors?.['minlength']"
+          >Share Value should be at least
+          {{shareVal.errors?.['minlength'].requiredLength}} digit(s).</span
+        >
+        <span *ngIf="shareVal.errors?.['maxlength']"
+          >Share Value should be maximum
+          {{shareVal.errors?.['maxlength'].requiredLength}} digit(s).</span
+        >
+        <span *ngIf="shareVal.errors?.['pattern']"
+          >Share Value should be a valid number.</span
+        >
+      </span>
     </div>
 
     <div class="form-group">
@@ -57,26 +159,78 @@
       <input
         class="form-control"
         name="totalUnits"
+        placeholder="Enter Total Units.."
         [(ngModel)]="property.totalUnits"
+        required
+        #totalUnits="ngModel"
+        minlength="1"
+        maxlength="10"
+        pattern="^[0-9]*$"
+        ng-required="true"
       />
+      <span class="text-danger"
+        *ngIf="totalUnits.invalid && (totalUnits.dirty || totalUnits.touched)"
+      >
+        <span *ngIf="totalUnits.errors?.['required']"
+          >Total Units is required.</span
+        >
+        <span *ngIf="totalUnits.errors?.['minlength']"
+          >Total Units must be at least 1 digit.</span
+        >
+        <span *ngIf="totalUnits.errors?.['maxlength']"
+          >Total Units cannot be more than 10 digits.</span
+        >
+        <span *ngIf="totalUnits.errors?.['pattern']"
+          >Total Units must be a number.</span
+        >
+      </span>
     </div>
 
     <div class="form-group">
       <label>Status</label>
-      <select class="form-control" name="status" [(ngModel)]="property.status">
+      <select
+        class="form-control"
+        name="status"
+
+        [(ngModel)]="property.status"
+        required
+        #status="ngModel"
+        ng-required="true"
+      >
+        <option value="" disabled selected>Select status</option>
         <option value="active">active</option>
         <option value="inactive">inactive</option>
       </select>
+      <span class="text-danger" *ngIf="status.invalid && (status.dirty || status.touched)">
+        <span *ngIf="status.errors?.['required']">Please select a status.</span>
+      </span>
     </div>
 
     <div class="form-group">
-      <label>StartDate</label>
+      <label>Start Date</label>
       <input
         type="date"
         class="form-control"
         name="startDate"
+        placeholder="Select Date.."
         [(ngModel)]="property.startDate"
+        required
+        [min]="getTodayDate()"
+        [max]="getMaxDate()"
+        #startDate="ngModel"
+        ng-required="true"
       />
+      <span class="text-danger" *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)">
+        <span *ngIf="startDate.errors?.['required']"
+          >Start date is required.</span
+        >
+        <span *ngIf="startDate.errors?.['min']"
+          >Start date cannot be earlier than today.</span
+        >
+        <span *ngIf="startDate.errors?.['max']"
+          >Start date cannot be later than {{ getMaxDate() }}.</span
+        >
+      </span>
     </div>
 
     <fieldset align="center" style="border: solid 1px; padding: 1rem 0.5rem">
@@ -86,26 +240,79 @@
         <input
           class="form-control"
           name="street"
+          placeholder="Enter Street.."
           [(ngModel)]="property.propertyLocation!.street"
+          required
+          minlength="3"
+          maxlength="50"
+          pattern="[A-Za-z0-9\s]+"
+          #street="ngModel"
+          ng-required="true"
         />
+        <span class="error-message" *ngIf="street.invalid && (street.dirty || street.touched)">
+          <span class="error-message" *ngIf="street.errors?.['required']">Street is required. </span>
+          <span class="error-message" *ngIf="street.errors?.['minlength']"
+            >Street must be at least 3 characters long.
+          </span>
+          <span class="error-message" *ngIf="street.errors?.['maxlength']"
+            >Street cannot be more than 50 characters long.
+          </span>
+          <span class="error-message" *ngIf="street.errors?.['pattern']"
+            >Street can only contain letters, numbers and spaces.
+          </span>
+        </span>
       </div>
 
       <div class="form-group">
         <label>City</label>
         <input
           class="form-control"
+          placeholder="Enter City.."
           name="city"
           [(ngModel)]="property.propertyLocation!.city"
+          required
+          minlength="3"
+          maxlength="20"
+          pattern="[A-Za-z ]*"
+          #city="ngModel"
+          ng-required="true"
         />
+        <span class="error-message" *ngIf="city.invalid && (city.dirty || city.touched)">
+          <span class="error-message" *ngIf="city.errors?.['required']">City is required. </span>
+          <span class="error-message" *ngIf="city.errors?.['minlength']">
+            City must be at least 3 characters long.
+          </span>
+          <span class="error-message" *ngIf="city.errors?.['maxlength']">
+            City cannot be more than 20 characters long.
+          </span>
+          <span class="error-message" *ngIf="city.errors?.['pattern']">
+            City can only contain letters and spaces.
+          </span>
+        </span>
       </div>
 
       <div class="form-group">
         <label>Pincode</label>
         <input
           class="form-control"
+          placeholder="Enter Pincode.."
           name="pincode"
           [(ngModel)]="property.propertyLocation!.pincode"
+          pattern="[0-9]{6}"
+          required
+          #pincode="ngModel"
+          title="Please enter a valid 6-digit pincode"
+          ng-required="true"
         />
+        <span
+          *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)"
+          class="text-danger"
+        >
+          <span class="text-danger" *ngIf="pincode.errors?.['required']">Pincode is required.</span>
+          <span class="text-danger" *ngIf="pincode.errors?.['pattern']"
+            >Please enter a valid 6-digit pincode.</span
+          >
+        </span>
       </div>
 
       <div class="form-group">
@@ -115,20 +322,66 @@
           aria-label="Default select example"
           name="state"
           [(ngModel)]="property.propertyLocation!.state"
+          required
+          #state="ngModel"
+          ng-required="true"
         >
-          <option value="Karnataka" selected>Karnataka</option>
+        <option value="AndhraPradesh">Andhra Pradesh</option>
+        <option value="ArunachalPradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="HimachalPradesh">Himachal Pradesh</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="MadhyaPradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Odisha">Odisha</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="TamilNadu">Tamil Nadu</option>
+        <option value="Telangana">Telangana</option>
+        <option value="Tripura">Tripura</option>
+        <option value="UttarPradesh">Uttar Pradesh</option>
+        <option value="Uttarakhand">Uttarakhand</option>
+        <option value="WestBengal">West Bengal</option>
+
         </select>
+        <span
+          *ngIf="state.invalid && (state.dirty || state.touched)"
+          class="text-danger"
+        >
+          <span *ngIf="state.errors?.['required']">State is required.</span>
+        </span>
       </div>
 
       <div class="form-group">
         <label>Country</label>
         <select
           class="form-control"
-          name="state"
+          name="country"
           [(ngModel)]="property.propertyLocation!.country"
+          required
+          #country="ngModel"
+          ng-required="true"
         >
           <option value="India" selected>India</option>
         </select>
+        <span
+          *ngIf="country.invalid && (country.dirty || country.touched)"
+          class="text-danger"
+        >
+          <span *ngIf="country.errors?.['required']">Country is required.</span>
+        </span>
       </div>
     </fieldset>
 
@@ -136,6 +389,7 @@
       type="submit"
       class="btn btn-primary"
       [class.btn-warning]="editing"
+      [disabled]="!form.valid"
       style="margin-top: 1rem; margin-bottom: 2rem"
     >
       {{ editing ? "Update" : "Add" }}
@@ -149,4 +403,6 @@
       Cancel
     </button>
   </form>
+</div>
+
 </div>

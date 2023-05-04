@@ -42,6 +42,7 @@ export class NavComponent {
 
   removeCustomer(){
     this.customerRepo.logOutCustomer();
+    this.rout.navigateByUrl("/home");
   }
 
   holdDropdown(){

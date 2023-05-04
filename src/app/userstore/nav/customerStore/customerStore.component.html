@@ -15,7 +15,7 @@
       <div class="propertyvalues">{{ order.noOfUnits }} </div>
     </div>
     <div class="div1">
-      <div><i class="fas fa-coins"></i> Order Date</div>
+      <div><i class="fas fa-calendar-alt"></i> Order Date</div>
       <div class="propertyvalues">{{ order.orderDate | date }}</div>
     </div>
     <div class="div1">
@@ -28,7 +28,7 @@
     </div>
     <div class="button">
       <button class="btn btn-warning btn-lg view" data-toggle="model" data-target="#investmentInitModal"
-        style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'" (click)="openpop(order.propertyId?.id!)">
+        style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'" (click)="openpop(order)">
         sell
       </button>
     </div>
@@ -38,16 +38,13 @@
 
 
 <div>
-  <div class="overlay" *ngIf="show">
-    <div class="content">
-      <div class="close" (click)="closepop()" style="cursor: pointer">
-        &times;
-      </div>
+  <div class="overay" *ngIf="show" style="width: 100%;">
+    <div class="content"> 
       <div>
         <strong>{{ property.name }}</strong><br />
         <div>
-          {{order | json}}
-          Required Units:{{order.noOfUnits}}
+          <!-- {{order | json}} -->
+          Required Units: 
           <input class="no-arrows unitInput" type="number" #units="ngModel" [(ngModel)]="order.noOfUnits" [min]="1"
             [max]="ordunits!" required />
 
@@ -59,10 +56,6 @@
             * Maximum allowed units is {{ordunits}}
           </div>
         </div>
-
-
-
-
         OrderPrice<span style="color: red">
           {{
           order.noOfUnits! * order.propertyId?.shareVal! | currency : "INR" : "symbol"
@@ -71,7 +64,7 @@
 
       <button type="button" [className]="color"
         *ngIf="order.propertyId?.shareVal! != 0 &&  !units.invalid && !units.errors?.['min'] && !units.errors?.['max']"
-        style="text-align: center; margin-top: 1rem" (click)="bookProperty()">
+        style="text-align: center; margin-top: 1rem" (click)="bookProperty(order)">
         {{ isSell ? "Sell" : "Sell" }}
       </button>
       <button class="btn btn-primary" style="margin-left: 2rem; margin-top: 1rem" (click)="closepop()"

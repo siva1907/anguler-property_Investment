@@ -79,10 +79,13 @@ export class OrderRepository {
     });
   }
 
-  sell(id: number) {
-    this.dataSource.sell(id).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
-    });
+  sell(order: PropertyOrder) {
+    this.dataSource.sell(order).subscribe(
+    //   order => {
+    //   //this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
+
+    // }
+    );
   }
   getOrderById(id: number): PropertyOrder | undefined {
     console.log(this.orders.find(order => order.orderId == id));
