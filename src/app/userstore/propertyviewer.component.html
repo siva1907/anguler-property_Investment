@@ -7,7 +7,7 @@
       <div class="addressgraph">
 
         <address>
-          <span><i class="fas fa-map-marker-alt" style="font-size: 38px"></i></span><span> </span>
+          <span><i class="fas fa-map-marker-alt" style="font-size: 38px;display: block;"></i></span>
           <strong>{{ property.name }}</strong><br />
           <span>{{ property.propertyLocation?.street }} , </span>
           <span>{{ property.propertyLocation?.city }}-</span>
@@ -17,15 +17,14 @@
         </address>
 
         <div class="graph" style="width:500px;">
-          <graph-data></graph-data>
+          <!-- <graph-data></graph-data> -->
         </div>
       </div>
-      <br><br><br><br><br>
       <hr />
       <div class="propDetails">
         <div class="pro">
           <p class="proHeading"><i class="fas fa-building"></i> Area</p>
-          {{ property.area }} m<sup>2</sup>
+          {{ property.area }} <sup>SF</sup>
         </div>
         <div class="pro">
           <p class="proHeading"><i class="fas fa-tags"></i> Total Cost</p>
@@ -72,16 +71,16 @@
       <div>
         <strong>{{ property.name }}</strong><br />
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-tags"></i> totalCost</p>
+          <p class="proHeading"><i class="fas fa-tags"></i> Total Cost</p>
           {{ property.totalCost | currency : "INR" : "symbol" : "4.2-2" }}
         </div>
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-sitemap"></i> RemainingUnits</p>
+          <p class="proHeading"><i class="fas fa-sitemap"></i> Remaining Units</p>
           {{ property.remainingUnits }}
         </div>
 
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-sitemap"></i> ShareValue</p>
+          <p class="proHeading"><i class="fas fa-sitemap"></i> Share Value</p>
           {{ property.shareVal | currency : "INR" : "symbol" }}
         </div>
 
@@ -95,11 +94,11 @@
             * Please Enter Atleast 1 unit
           </div>
           <div *ngIf="units.errors?.['max']" class="error">
-            * insufficent units {{property.remainingUnits}}
+            * Max Purchase units {{property.remainingUnits}}
           </div>
         </div>
 
-        OrderPrice<span style="color: red">
+        Order Price<span style="color: red">
           {{
           order.noOfUnits! * property.shareVal! | currency : "INR" : "symbol"
           }}</span>

@@ -4,6 +4,7 @@ import { PropertyOrder } from "./order.model";
 import { RestDataSource } from "./rest.datasource";
 import { Customer } from "./customer.model";
 import { Subscription } from "rxjs";
+import { PropertyRepositary } from "./property.repository";
 
 @Injectable()
 export class OrderRepository {
@@ -18,7 +19,7 @@ export class OrderRepository {
 
   stopSubscription?: Subscription;
   // private customer?:Customer
-  constructor(private dataSource: RestDataSource) { }
+  constructor(private dataSource: RestDataSource,public proprepo:PropertyRepositary) { }
 
   loadOrders() {
     this.loaded = true;
@@ -55,6 +56,13 @@ export class OrderRepository {
   }
 
   saveOrder(order: PropertyOrder, customerId: number, propertyId: number) {
+
+    this.proprepo.properties.filter(unitsUpdate =>{
+      if(unitsUpdate.id == propertyId){
+           unitsUpdate.blockedUnits= unitsUpdate.blockedUnits! + order.noOfUnits!
+      }
+   })
+    
     this.dataSource.saveOrder(order, customerId, propertyId).subscribe(order => {
       this.orders.push(order)
     })
@@ -66,6 +74,12 @@ export class OrderRepository {
     this.customerId = order.customerId?.id;
     this.dataSource.updateOrder(order, this.customerId!, this.propertyId!).subscribe(updatedOrder => {
       const index = this.orders.findIndex(o => o.orderId === updatedOrder.orderId);
+      this.proprepo.properties.filter(unitsUpdate =>{
+        if(unitsUpdate.id == order.propertyId?.id){
+             unitsUpdate.remainingUnits= unitsUpdate.remainingUnits! - order.noOfUnits!;
+             unitsUpdate.blockedUnits=unitsUpdate.blockedUnits!-order.noOfUnits!;
+        }
+     })
       if (index !== -1) {
         this.orders.splice(index, 1, updatedOrder);
       }
@@ -79,10 +93,14 @@ export class OrderRepository {
     });
   }
 
-  sell(id: number) {
-    this.dataSource.sell(id).subscribe(order => {
-      this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
-    });
+  sell(order: PropertyOrder) {
+    this.dataSource.sell(order)
+    .subscribe(
+    //   order => {
+    //   //this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
+
+    // }
+    );
   }
   getOrderById(id: number): PropertyOrder | undefined {
     console.log(this.orders.find(order => order.orderId == id));

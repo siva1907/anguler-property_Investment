@@ -46,19 +46,21 @@ else{
   }
   else if(this.sortBy==="Remining Units")
   {
-    this.props.sort((a, b) => a.remainingUnits! - b.remainingUnits!);
+    this.props.sort((a, b) => b.remainingUnits! - a.remainingUnits!);
   }
   else if(this.sortBy==="Most Blocked By Users") {
 
-    this.props.sort((a, b) => a.blockedUnits! - b.blockedUnits!);
+    this.props.sort((a, b) => b.blockedUnits! - a.blockedUnits!);
+  }else if(this.sortBy==="Yeild")
+  {
+    this.props.sort((a, b) => b.yield_value! - a.yield_value!); 
   }
 if(this.searchByName!='')
 {
 this.props=this.repository.getProperties().filter(p=>p.name?.toLocaleLowerCase().match(this.searchByName!.toLocaleLowerCase().trim()))
 }
 
-
-  return this.props;
+  return this.props.filter(prop=> "active"===prop.status);
   }
 
 

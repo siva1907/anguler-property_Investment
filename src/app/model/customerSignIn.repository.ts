@@ -28,13 +28,15 @@ export class CustomerSigninRepository {
     if (customerMail && password) {
         this.restdatasource
         .getCustomer(customerMail, password)
-        .subscribe(customer1 => (this.customer = customer1));
+        .subscribe(customer1 => {
+          localStorage.setItem("customer",JSON.stringify(customer1))
+        });
          
         this.restdatasource.verifyCustomer(customerMail, password).subscribe(
         (response) => {
           // Handle the response as string
           if (response == 'Data Matched') {
-            if(this.customer?.customerName!=null){
+            if(localStorage.getItem("customer")!=null){
               this.router.navigateByUrl('/home');
             }
 
@@ -60,11 +62,14 @@ export class CustomerSigninRepository {
   }
 
   getLogedInCustomer(): Customer {
-    return  this.customer!;
+    const cust=localStorage.getItem("customer")
+    return JSON.parse(cust!)
+    // return  this.customer!;
   }
 
   logOutCustomer(){
-    this.customer=undefined;
+    localStorage.removeItem("customer")
+    // this.customer=undefined;
   }
 
   saveCustomer(customer: Customer) {

@@ -13,6 +13,7 @@ import { AdminLoginRepository } from '../model/adminLogin.repositary';
 export class AdminLoginComponent  {
 
   admin:Admin=new Admin();
+  showPassword = false;
 
   constructor(private repo:AdminLoginRepository,private router:Router) { }
 
@@ -21,6 +22,9 @@ export class AdminLoginComponent  {
   onSubmit(form:NgForm) {
     console.log("working");
     this.repo.verifyAdmin(this.admin.adminName,this.admin.password)
+  }
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

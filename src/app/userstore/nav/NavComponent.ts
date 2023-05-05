@@ -19,7 +19,9 @@ export class NavComponent {
 
 
   get customer():Customer{
-    return this.customerRepo.getLogedInCustomer();
+    const cust=localStorage.getItem("customer")
+    return JSON.parse(cust!)
+    // return this.customerRepo.getLogedInCustomer();
   }
 
   @HostListener('window:scroll', [])
@@ -42,6 +44,7 @@ export class NavComponent {
 
   removeCustomer(){
     this.customerRepo.logOutCustomer();
+    this.rout.navigateByUrl("/home");
   }
 
   holdDropdown(){

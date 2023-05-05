@@ -66,6 +66,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 .signup-link {
@@ -76,4 +77,22 @@
 .error-message {
   color: #ff0000;
   margin-top: 5px;
+}
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.password-toggle i {
+  font-size: 1.2rem;
+  color: #333;
 }

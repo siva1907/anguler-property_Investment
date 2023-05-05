@@ -16,7 +16,7 @@ export class Property {
       public status?: string,
       public modifiedOn?:string,
       public propertyLocation?: PropertyLocation,
-      public yield_value  ?:number,
+      public yield_value ?:number,
       public blockedUnits?:number
       ) { }
 }

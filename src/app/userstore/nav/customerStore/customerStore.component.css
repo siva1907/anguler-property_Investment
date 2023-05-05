@@ -1,79 +1,85 @@
 .maincard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 100%;
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: relative;
-    top: 9rem;
-    
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  top: 9rem;
 
-  .heading{
-    font-size: xx-large;
-    font-weight: 500;
-    color: #8cb78c;
-    position: relative;
-    top: 8rem;
-    text-align: center;
-  }
-  
-  .card1 {
-    width: 30%;
-    height: fit-content;
-    background-color: #fff;
-    margin-bottom: 7rem;
-    box-sizing: border-box;
-    height: 500px;
-  }
-  
-  img {
-    height: 276px;
-    padding: 1rem;
-  }
-  .title {
-    text-align: center;
-    color: #000;
-    font-weight: 400;
-    font-family: gourmand-regular;
-  }
-  .div1 {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-  .propertyvalues {
-    margin-left: 5rem;
-  }
-  
-  .button {
-    text-align: center;
-    margin: 30px;
-  }
-  
-.overlay{
-  position: absolute;
+}
+
+.heading {
+  font-size: xx-large;
+  font-weight: 500;
+  color: #8cb78c;
+  position: relative;
+  top: 8rem;
+  text-align: center;
+}
+
+.card1 {
+  width: 30%;
+  height: fit-content;
+  background-color: #fff;
+  margin-bottom: 7rem;
+  box-sizing: border-box;
+  height: 500px;
+}
+
+img {
+  height: 276px;
+  padding: 1rem;
+}
+
+.title {
+  text-align: center;
+  color: #000;
+  font-weight: 400;
+  font-family: gourmand-regular;
+}
+
+.div1 {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.propertyvalues {
+  margin-left: 5rem;
+}
+
+.button {
+  text-align: center;
+  margin: 30px;
+}
+
+.overay {
+  position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
-  background-color: rgba(0,0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
 }
+
 .pro {
   color: rgb(86, 84, 84);
   padding: 0.5rem;
-  font-family:  math;
+  font-family: math;
   width: 30%;
 
 }
-.popup button{
+
+.popup button {
   width: 100%;
   margin-top: 6rem;
   padding: 10px 0;
@@ -84,38 +90,45 @@
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
-  box-shadow: 0 2px 5 px rgba(0,0, 0, 0.2);
+  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
 }
+
 .pro {
   color: rgb(86, 84, 84);
   padding: 0.5rem;
-  font-family:  math;
+  font-family: math;
   width: 30%;
 
 }
+
 .error {
   color: red;
   padding: 0.3rem;
 }
-  
-.popup{
+
+.popup {
 
   background: #fff;
   border-radius: 6px;
   position: absolute;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%,-50%); */
+  transform: translate(-50%,-50%);
   text-align: center;
-  padding:0  30px 30px ;
+  padding: 0 30px 30px;
   color: #333;
   width: 22rem;
-  height: 30rem;
+  height: fit-content;
 
 }
-.content{
+
+.content {
   background-color: white;
   width: 22rem;
   height: fit-content;
-padding: 1rem;
+  position: absolute;
+  padding: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -12,6 +12,7 @@ import { CustomerSigninRepository } from '../model/customerSignIn.repository';
 export class CustomerSigninComponent implements OnInit {
 
   login:Customer=new Customer();
+  showPassword = false;
   constructor(private repo:CustomerSigninRepository, private router:Router) { }
 
   ngOnInit(): void {
@@ -20,6 +21,9 @@ export class CustomerSigninComponent implements OnInit {
   onSubmit(form:NgForm)
   {
       this.repo.verifyCustomer(this.login.customerMail,this.login.password);
+  }
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }

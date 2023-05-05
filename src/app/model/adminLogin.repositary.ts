@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestDataSource } from './rest.datasource';
 import { Router } from '@angular/router';
 import { Admin } from './admin.model';
+import { log } from 'console';
 
 @Injectable()
 export class AdminLoginRepository {
@@ -24,6 +25,7 @@ export class AdminLoginRepository {
             this.dataSource
               .getAdmin(adminName, password)
               .subscribe((admin1) => (this.admin = admin1));
+              console.log('data matched')
             this.router.navigateByUrl('/admin');
           } else {
             // Handle the error case

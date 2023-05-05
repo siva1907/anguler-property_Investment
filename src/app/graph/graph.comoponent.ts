@@ -7,6 +7,9 @@ Chart.register(...registerables);
 import { HttpClient } from "@angular/common/http";
 import { RestDataSource } from '../model/rest.datasource';
 import { ActivatedRoute } from '@angular/router';
+import { AdminLoginComponent } from '../login/adminLogin.component';
+import { AdminLoginRepository } from '../model/adminLogin.repositary';
+import { Admin } from '../model/admin.model';
 
 
 @Component({
@@ -18,11 +21,12 @@ export class GraphComponent implements OnInit{
     propertyReport!:any;
     pid?:number;
     
-   
+   admin?:Admin;
     constructor(
-     private datasource:RestDataSource,private http:HttpClient,private activeRouter:ActivatedRoute) { 
+     private datasource:RestDataSource,private http:HttpClient,private activeRouter:ActivatedRoute,adminrepo:AdminLoginRepository) { 
       // repo.subscribeDailyReport()
       // console.log("=============")
+      this.admin=adminrepo.getAdmin();
     }
 
    

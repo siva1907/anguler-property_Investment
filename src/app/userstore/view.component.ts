@@ -31,7 +31,8 @@ export class ViewComponent {
     private orderRepository: OrderRepository,
     private repo: CustomerSigninRepository,
     private formBuilder: FormBuilder,
-    private customerRepo: CustomerSigninRepository
+    private customerRepo: CustomerSigninRepository,
+    private propertyRepository:PropertyRepositary
   ) {
     this.property = this.repository.getProperty(
       this.activeRoute.snapshot.params['id']

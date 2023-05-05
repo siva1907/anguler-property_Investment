@@ -2,12 +2,14 @@ import { Observable } from 'rxjs';
 import { Property } from './property.model';
 import { RestDataSource } from './rest.datasource';
 import { Injectable } from '@angular/core';
+import { PropertyOrder } from './order.model';
 
 @Injectable({
   providedIn: 'root',
  })
 export class PropertyRepositary {
-  private properties: Property[] = [];
+  public properties: Property[] = [];
+  private orders: PropertyOrder[] = [];
 
   constructor(private restDataSource: RestDataSource) {
     restDataSource
@@ -16,10 +18,23 @@ export class PropertyRepositary {
     console.log(this.properties);
   }
 
+
+  // saveOrder(order: PropertyOrder, customerId: number, propertyId: number) {
+  //   this.properties.filter(unitsUpdate =>{
+  //    if(unitsUpdate.id == propertyId){
+  //         unitsUpdate.blockedUnits= unitsUpdate.blockedUnits! + order.noOfUnits!
+  //    }
+  // })
+  //   this.restDataSource.saveOrder(order, customerId, propertyId).subscribe(order => {
+  //     this.orders.push(order)
+  //   })
+  // }
+
+  
   getProperties(): Property[] {
     return this.properties;
   }
-
+  
   saveproperty(property: Property, adminId: number) {
     if (property.id == 0 || property.id == null) {
       return this.restDataSource
