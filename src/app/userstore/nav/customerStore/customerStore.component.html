@@ -28,7 +28,7 @@
     </div>
     <div class="button">
       <button class="btn btn-warning btn-lg view" data-toggle="model" data-target="#investmentInitModal"
-        style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'" (click)="openpop(order)">
+        style="margin-right: 0.5rem; padding: 0.2rem 1.2rem" *ngIf="order.orderStatus=='approved'" (click)="openpop(order.propertyId?.id!)">
         Sell
       </button>
     </div>
@@ -40,6 +40,7 @@
 <div>
   <div class="overay" *ngIf="show" style="width: 100%;">
     <div class="content"> 
+  
       <div>
         <strong>{{ property.name }}</strong><br />
         <div>
@@ -56,7 +57,11 @@
             * Maximum allowed units is {{ordunits}}
           </div>
         </div>
-        Order Price<span style="color: red">
+
+
+
+
+        OrderPrice<span style="color: red">
           {{
           order.noOfUnits! * order.propertyId?.shareVal! | currency : "INR" : "symbol"
           }}</span>
