@@ -53,6 +53,10 @@ export class RestDataSource {
   getOrders(): Observable<PropertyOrder[]> {
     return this.http.get<PropertyOrder[]>( `http://localhost:8082/api/allorders`);
   }
+
+  sendMail(id:number){
+    return this.http.get<String>( `http://localhost:8082/api/send-mail/${id}`);
+  }
   getOrderByCid(id:number): Observable<PropertyOrder[]> {
     return this.http.get<PropertyOrder[]>( `http://localhost:8082/api/bycustomer/${id}`);
   }

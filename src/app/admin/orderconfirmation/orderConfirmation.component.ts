@@ -41,15 +41,21 @@ export class OrderconfirmationComponent {
     }  
   }
   deleteOrder(orderId:number){
+    
     this.orderRepository.deleteOrder(orderId);
   }
+
   updateOrder() {
     if(this.order!= undefined) {
 
     this.order.orderStatus='approved'
+    console.log(this.order);
+    
+
     }
     return this.orderRepository.updateOrder(this.order!);
   }
+  
   getOrder(id:number){
     this.order=this.orderRepository.getOrderById(id);
     this.updateOrder();

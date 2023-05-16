@@ -16,6 +16,7 @@ export class OrderRepository {
   private customerId?: number;
   private customerOrders?: PropertyOrder[] = [];
   private customerOrdersById?: PropertyOrder[] = [];
+  mail?:String;
 
   stopSubscription?: Subscription;
   // private customer?:Customer
@@ -56,6 +57,7 @@ export class OrderRepository {
   }
 
   saveOrder(order: PropertyOrder, customerId: number, propertyId: number) {
+ 
 
     this.proprepo.properties.filter(unitsUpdate =>{
       if(unitsUpdate.id == propertyId){
@@ -65,15 +67,31 @@ export class OrderRepository {
     
     this.dataSource.saveOrder(order, customerId, propertyId).subscribe(order => {
       this.orders.push(order)
+      
     })
+    // console.log("check"+order.orderId);
+
+
+    
+    // this.dataSource.sendMail(order.orderId!).subscribe(m=>this.mail=m);
+    
   }
 
 
   updateOrder(order: PropertyOrder) {
     this.propertyId = order.propertyId?.id;
     this.customerId = order.customerId?.id;
+    
+    
+    
+    
     this.dataSource.updateOrder(order, this.customerId!, this.propertyId!).subscribe(updatedOrder => {
       const index = this.orders.findIndex(o => o.orderId === updatedOrder.orderId);
+
+    this.dataSource.sendMail(order.orderId!).subscribe(m=>this.mail=m);
+    console.log(this.mail);
+    console.log(order.orderId);
+
       this.proprepo.properties.filter(unitsUpdate =>{
         if(unitsUpdate.id == order.propertyId?.id){
              unitsUpdate.remainingUnits= unitsUpdate.remainingUnits! - order.noOfUnits!;
@@ -88,9 +106,11 @@ export class OrderRepository {
 
 
   deleteOrder(id: number) {
+    this.dataSource.sendMail(id).subscribe(m=>this.mail=m);
     this.dataSource.deleteOrder(id).subscribe(order => {
       this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
     });
+   
   }
 
   sell(order: PropertyOrder) {

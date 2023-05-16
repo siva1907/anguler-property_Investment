@@ -78,6 +78,8 @@ export class ViewComponent {
     this.order.propertyId=this.property;
 
     this.orderRepository.saveOrder(this.order,this.logedInCustomer.id!,this.property.id!);
+    console.log(this.order.orderId);
+    
 
   }
 
