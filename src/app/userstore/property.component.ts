@@ -19,7 +19,7 @@ export class PropertyComponent  {
   public sortBy?:String="Most Blocked By Users";
 
   get cities():String[]|any
-  
+
   {
     //filter((value,index,self)=>self.indexOf(value)===index)
    return this.repository.getProperties().map(e=>e.propertyLocation?.city?.toLocaleLowerCase()).filter((value,index,self)=>self.indexOf(value)===index);
@@ -35,7 +35,6 @@ if(this.filterText==='')
 }
 else{
     this.props=this.repository.getProperties().filter(p=>p.propertyLocation?.city?.toLocaleLowerCase()===this.filterText.toLocaleLowerCase())
-
   }
   //...................................
 
@@ -53,7 +52,7 @@ else{
     this.props.sort((a, b) => b.blockedUnits! - a.blockedUnits!);
   }else if(this.sortBy==="Yeild")
   {
-    this.props.sort((a, b) => b.yield_value! - a.yield_value!); 
+    this.props.sort((a, b) => b.yield_value! - a.yield_value!);
   }
 if(this.searchByName!='')
 {
@@ -100,7 +99,7 @@ this.props=this.repository.getProperties().filter(p=>p.name?.toLocaleLowerCase()
 //     else{
 //       this.props= this.repository.getProperties().filter(p=>p.propertyLocation?.city===this.select);
 //     }
-    
+
 //     return this.props;
 //   }
 

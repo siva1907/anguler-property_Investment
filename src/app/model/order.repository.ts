@@ -34,8 +34,6 @@ export class OrderRepository {
   getOrders(): PropertyOrder[] {
     if (!this.loaded) {
       this.loadOrders();
-
-
     }
     console.log(this.orders);
     return this.orders;
@@ -57,34 +55,34 @@ export class OrderRepository {
   }
 
   saveOrder(order: PropertyOrder, customerId: number, propertyId: number) {
- 
+
 
     this.proprepo.properties.filter(unitsUpdate =>{
       if(unitsUpdate.id == propertyId){
            unitsUpdate.blockedUnits= unitsUpdate.blockedUnits! + order.noOfUnits!
       }
    })
-    
+
     this.dataSource.saveOrder(order, customerId, propertyId).subscribe(order => {
       this.orders.push(order)
-      
+
     })
     // console.log("check"+order.orderId);
 
 
-    
+
     // this.dataSource.sendMail(order.orderId!).subscribe(m=>this.mail=m);
-    
+
   }
 
 
   updateOrder(order: PropertyOrder) {
     this.propertyId = order.propertyId?.id;
     this.customerId = order.customerId?.id;
-    
-    
-    
-    
+
+
+
+
     this.dataSource.updateOrder(order, this.customerId!, this.propertyId!).subscribe(updatedOrder => {
       const index = this.orders.findIndex(o => o.orderId === updatedOrder.orderId);
 
@@ -110,16 +108,13 @@ export class OrderRepository {
     this.dataSource.deleteOrder(id).subscribe(order => {
       this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
     });
-   
+
   }
 
   sell(order: PropertyOrder) {
     this.dataSource.sell(order)
     .subscribe(
-    //   order => {
-    //   //this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
 
-    // }
     );
   }
   getOrderById(id: number): PropertyOrder | undefined {

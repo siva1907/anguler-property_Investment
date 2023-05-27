@@ -39,23 +39,23 @@
 
 <div>
   <div class="overay" *ngIf="show" style="width: 100%;">
-    <div class="content"> 
-  
+    <div class="content">
+
       <div>
         <strong>{{ property.name }}</strong><br />
         <div>
           <!-- {{order | json}} -->
-          Required Units: 
-          <input class="no-arrows unitInput" type="number" #units="ngModel" [(ngModel)]="order.noOfUnits" [min]="1"
-            [max]="ordunits!" required />
-
-          <div *ngIf="units.touched && units.invalid" class="error"> Please enter the required units</div>
+          Required Units:
+          <input class="no-arrows unitInput" type="number" #units="ngModel" [(ngModel)]="order.noOfUnits" />
+           <!-- [min]="1"
+            [max]="ordunits!" required
+         <div *ngIf="units.touched && units.invalid" class="error"> Please enter the required units</div>
           <div *ngIf="units.errors?.['min']" class="error">
             * Please enter at least 1 unit
           </div>
           <div *ngIf="units.errors?.['max']" class="error">
             * Maximum allowed units is {{ordunits}}
-          </div>
+          </div> -->
         </div>
 
 
