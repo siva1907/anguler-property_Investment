@@ -23,26 +23,27 @@ export class CustomerStoreComponent implements OnDestroy {
     order: PropertyOrder = new PropertyOrder();
     property: Property = new Property();
     customer?: Customer = new Customer();
+    private nubunits?:number;
     //orderForm: FormGroup;
     constructor(
-        private custlogin: CustomerSigninRepository, 
-        private orderRepo: OrderRepository, 
+        private custlogin: CustomerSigninRepository,
+        private orderRepo: OrderRepository,
         private activeRouter: ActivatedRoute,
         private orderRepository: OrderRepository,
         private customerRepo: CustomerSigninRepository,
         private formBuilder: FormBuilder,
         private repository: PropertyRepositary,
         private activeRoute: ActivatedRoute,
-      
+
         private repo: CustomerSigninRepository,
-      
+
     ) {
         // console.log(this.custlogin.customer?.id!);
 
         // this.props= this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!);
         // console.log(this.orderRepo.getOrdersByCustId(this.custlogin.customer?.id!));
-      
-          
+
+
 
     }
 
@@ -76,10 +77,10 @@ export class CustomerStoreComponent implements OnDestroy {
         // return this.customerRepo.getLogedInCustomer();
       }
     saveOrder() {
-        
-        
-        this.orderRepository.sell(this.order);
-    
+
+
+        this.orderRepository.sell(this.order,this.nubunits!);
+
       }
     show=false;
 
@@ -88,27 +89,34 @@ export class CustomerStoreComponent implements OnDestroy {
     //   //  this.id=id;
     //     this.order.orderStatus='approved';
     //     this.order.orderPrice=this.order.noOfUnits!*this.order.propertyId?.shareVal!;
-       
+
     //   return this.props?.find((prop)=>prop.propertyId?.id!=this.id)
     // }
-    openpop(orders:PropertyOrder) {
+      openpop(orders:PropertyOrder) {
         this.show = true;
        this.order=orders;
         this.ordunits=orders.noOfUnits;
         this.customer=this.order.customerId;
         //this.property=this.order.propertyId;
 
-      
+
       }
-    
+
     closepop() {
         this.show = false;
         this.isSell=false;
     }
     bookProperty(orders:PropertyOrder) {
+      console.log(orders.noOfUnits);
+
+       this.nubunits=orders.noOfUnits
+       console.log(this.nubunits+"in book property before");
         this.order.noOfUnits= this.ordunits!-this.order.noOfUnits!;
+
+        console.log(this.nubunits+"in book property");
+
         this.saveOrder();
-        
+
         // this.color='btn btn-warning';
         this.isSell = true;
       }

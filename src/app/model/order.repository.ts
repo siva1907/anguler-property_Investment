@@ -5,6 +5,7 @@ import { RestDataSource } from "./rest.datasource";
 import { Customer } from "./customer.model";
 import { Subscription } from "rxjs";
 import { PropertyRepositary } from "./property.repository";
+import { numbers } from "@material/dialog";
 
 @Injectable()
 export class OrderRepository {
@@ -16,11 +17,18 @@ export class OrderRepository {
   private customerId?: number;
   private customerOrders?: PropertyOrder[] = [];
   private customerOrdersById?: PropertyOrder[] = [];
+  private order?:PropertyOrder;
+
+ private remainingUnits?:number
   mail?:String;
 
   stopSubscription?: Subscription;
   // private customer?:Customer
-  constructor(private dataSource: RestDataSource,public proprepo:PropertyRepositary) { }
+  constructor(private dataSource: RestDataSource,public proprepo:PropertyRepositary) {
+    this.loadOrders
+    this.loadCustOrsers
+    this.getOrders
+   }
 
   loadOrders() {
     this.loaded = true;
@@ -110,12 +118,50 @@ export class OrderRepository {
     });
 
   }
+  deleteOrderbyAdmin(id: number) {
 
-  sell(order: PropertyOrder) {
-    this.dataSource.sell(order)
-    .subscribe(
 
-    );
+    this.order=this.orders.find(order => order.orderId == id)
+    console.log(this.order);
+
+    this.dataSource.sendMail(id).subscribe(m=>this.mail=m);
+    this.dataSource.deleteOrderbyadmin(id).subscribe(order => {
+      this.orders.splice(this.orders.findIndex(o => id == o.orderId), 1);
+    });
+
+    this.proprepo.properties.filter(unitsUpdate =>{
+
+      if(unitsUpdate.id == this.order!.propertyId?.id){
+        console.log(unitsUpdate);
+
+          console.log(unitsUpdate.blockedUnits,this.order!.noOfUnits!);
+
+           unitsUpdate.blockedUnits=unitsUpdate.blockedUnits!-this.order!.noOfUnits!;
+      }
+   })
+
+  }
+
+  sell(order: PropertyOrder,sold:number) {
+
+    console.log("in sell block"+sold);
+
+    console.log(order.orderId,sold);
+    this.proprepo.properties.filter(unitsUpdate =>{
+      if(unitsUpdate.id == order.propertyId?.id){
+
+        console.log(unitsUpdate.remainingUnits+"total reming");
+
+           unitsUpdate.remainingUnits=unitsUpdate.remainingUnits!+sold
+        console.log(unitsUpdate.remainingUnits+"total reming");
+
+      }
+   })
+
+   this.dataSource.sell(order)
+   .subscribe(
+
+   );
   }
   getOrderById(id: number): PropertyOrder | undefined {
     console.log(this.orders.find(order => order.orderId == id));

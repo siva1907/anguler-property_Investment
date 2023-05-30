@@ -42,7 +42,7 @@ export class OrderconfirmationComponent {
   }
   deleteOrder(orderId:number){
     
-    this.orderRepository.deleteOrder(orderId);
+    this.orderRepository.deleteOrderbyAdmin(orderId);
   }
 
   updateOrder() {

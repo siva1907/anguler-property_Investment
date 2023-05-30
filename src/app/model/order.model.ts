@@ -14,7 +14,5 @@ export class PropertyOrder {
 
     constructor() { }
 
-    clear() {
-
-    }
+  
 }
