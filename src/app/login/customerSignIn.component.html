@@ -11,7 +11,7 @@
 
         <form #form="ngForm" (ngSubmit)="onSubmit(form)">
           <div class="form-group">
-            <label for="customerMail"><i class="fas fa-envelope"></i> Email</label>
+            <label for="customerMail"><i class="fa fa-envelope"></i> Email</label>
             <input type="customerMail" class="form-control" [(ngModel)]="login.customerMail" name="customerMail" required>
             <!-- Add appropriate validation styles for invalid input -->
             <!-- <div *ngIf="form.controls['customerMail'].invalid && (form.controls['customerMail'].dirty || form.controls['customerMail'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid email</div> -->
@@ -19,25 +19,25 @@
 
           </div>
           <!-- <div class="form-group">
-            <label for="password"><i class="fas fa-lock"></i>Password</label>
+            <label for="password"><i class="fa fa-lock"></i>Password</label>
             <input type="password" class="form-control" [(ngModel)]="login.password" name="password" required>
 
             <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid password</div>
 
           </div> -->
-          <label for="password"><i class="fas fa-lock"></i>Password</label>
+          <label for="password"><i class="fa fa-lock"></i>Password</label>
             <div class="password-input-container">
             <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" [(ngModel)]="login.password" name="password" required>
             <button type="button" class="password-toggle" (click)="togglePassword()">
-              <i class="{{ showPassword ? 'far fa-eye-slash' : 'far fa-eye' }}"></i>
+              <i class="{{ showPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
               </button>
           </div>
         <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" class="error-message"><i class="fas fa-exclamation-circle"></i> Please enter a valid password</div>
 
 
-          <button type="submit" class="btn-login"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+          <button type="submit" class="btn-login"><i class="fa fa-sign-in-alt"></i> Sign In</button>
           <div class="signup-link">
-            Don't have an account? <a routerLink="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+            Don't have an account? <a routerLink="/signup"><i class="fa fa-user-plus"></i> Sign Up</a>
           </div>
           <div class="text-center">
             <a class="small" routerLink="/customer/:mode/:id">Forgot password?</a>

@@ -28,7 +28,7 @@
   <div class="card mb-3 imgcard">
     <img src="{{ property1.imageUrl }}" class="card-img-top" alt="..." />
     <div class="address">
-      <span><i class="fas fa-map-marker-alt" style="font-size: 38px"></i></span
+      <span><i class="fa fa-map-marker-alt" style="font-size: 38px"></i></span
       ><span> </span>
       <address>
         <strong>{{ property1.name }}</strong
@@ -44,42 +44,42 @@
       <hr />
       <div class="propDetails">
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-building"></i> Area</p>
+          <p class="proHeading"><i class="fa fa-building"></i> Area</p>
           {{ property1.area }} <sup>SF</sup>
         </div>
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-tags"></i> Total Cost</p>
+          <p class="proHeading"><i class="fa fa-tags"></i> Total Cost</p>
           {{ property1.totalCost }}
         </div>
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-chart-line"></i> Share Value</p>
+          <p class="proHeading"><i class="fa fa-chart-line"></i> Share Value</p>
           {{ property1.shareVal }}
         </div>
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-sitemap"></i> Total Units</p>
+          <p class="proHeading"><i class="fa fa-sitemap"></i> Total Units</p>
           {{ property1.totalUnits }}
         </div>
 
         <div class="pro">
-          <p class="proHeading"><i class="fas fa-sitemap"></i> Remaing Units</p>
+          <p class="proHeading"><i class="fa fa-sitemap"></i> Remaing Units</p>
           {{ property1.remainingUnits }}
         </div>
 
         <div class="pro">
           <p class="proHeading">
-            <i class="fas fa-calendar-alt"></i> Start Date
+            <i class="fa fa-calendar-alt"></i> Start Date
           </p>
           {{ property1.startDate | date }}
         </div>
         <div class="pro">
           <p class="proHeading">
-            <i class="fas fa-calendar-alt"></i> modified On
+            <i class="fa fa-calendar-alt"></i> modified On
           </p>
           {{ property1.modifiedOn | date }}
         </div>
         <div class="pro">
           <p class="proHeading">
-            <i  class="far fa-thumbs-up" *ngIf="property1.status=='active'"></i><i  class="far fa-thumbs-down" *ngIf="property1.status=='inactive'"></i> Status
+            <i  class="fa fa-thumbs-up" *ngIf="property1.status=='active'"></i><i  class="fa fa-thumbs-down" *ngIf="property1.status=='inactive'"></i> Status
           </p>
           {{ property1.status }}
         </div>
@@ -125,7 +125,7 @@
      <button [routerLink]="['/graph/',property1.id]"
     class="btn btn-info">
       graphical
-    </button> 
+    </button>
     </button> -->
 
     <button

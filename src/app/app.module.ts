@@ -1,3 +1,4 @@
+
 import { CUSTOM_ELEMENTS_SCHEMA, Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -19,16 +20,21 @@ import { OrderconfirmationComponent } from './admin/orderconfirmation/orderConfi
 import { GraphComponent } from './graph/graph.comoponent';
 import { CarouselComponent } from './userstore/nav/carousel/carousel.component';
 import { CustomerStoreComponent } from './userstore/nav/customerStore/CustomerStore.component';
+import { EurekaModule } from './config/eureka.module';
+import { EurekaConfigService } from './config/eureka.config';
+
 
 @NgModule({
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [EurekaConfigService],
   imports: [
     BrowserModule,
     AdminModule,
     LoginModule,
     PropertyModule,
-    
+
+
     RouterModule.forRoot([
       { path: 'add/:mode/:id', component: AddPropertyComponent },
       { path: 'add', component: AddPropertyComponent },
@@ -61,3 +67,11 @@ import { CustomerStoreComponent } from './userstore/nav/customerStore/CustomerSt
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+
+
+
+// Register with Eureka server
+// eurekaConfig.start((error: any) => {
+//   console.log(error || 'Eureka registration complete');
+// });

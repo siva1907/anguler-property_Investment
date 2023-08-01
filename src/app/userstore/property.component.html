@@ -105,9 +105,9 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
 
       <div class="search">
         <input type="text" [(ngModel)]="searchByName" style="width: 100%;height: 75%;" placeholder="Search Property here "  class="fa fa-search" >
-       
+
       </div>
-      
+
 
 
 
@@ -120,35 +120,35 @@ style="width: 450px; padding: 2px 20px; margin: 10px 0px; height: 30px;"
     <div class="card card1" *ngFor="let property of properties">
       <h1 class="title">{{ property?.name }}</h1>
       <div class="title">
-        <i class="fas fa-map-marker-alt"></i>
+        <i class="fa fa-map-marker-alt"></i>
         {{ property.propertyLocation?.city }}
       </div>
       <img class="card-img-top" src="{{ property.imageUrl }}" alt="Card image cap" />
       <div class="div1">
-        <div><i class="far fa-building"></i>   Area</div>
+        <div><i class="fa fa-building"></i>   Area</div>
         <div class="propertyvalues">{{ property.area }} <sup>SF</sup></div>
       </div>
       <div class="div1">
-        <div><i class="fas fa-exclamation-circle"></i> Blocked units</div>
+        <div><i class="fa fa-exclamation-circle"></i> Blocked units</div>
         <div class="propertyvalues">
           {{ property.blockedUnits  }}
         </div>
       </div>
-      
+
       <div class="div1">
-        <div><i class="fas fa-balance-scale-left"></i> Yield</div>
+        <div><i class="fa fa-balance-scale"></i> Yield</div>
         <div class="propertyvalues">
           {{ property.yield_value }}%
         </div>
       </div>
       <div class="div1">
-        <div><i class="fas fa-chart-line"></i> Share Value</div>
+        <div><i class="fa fa-line-chart"></i> Share Value</div>
         <div class="propertyvalues">
           {{ property.shareVal | currency : "INR" : "symbol" }}
         </div>
       </div>
       <div class="butt">
-        <button type="button" class="btn btn-primary" *ngIf="customer != null" 
+        <button type="button" class="btn btn-primary" *ngIf="customer != null"
           [disabled]="property.remainingUnits === 0" [routerLink]="['/home', property.id]">
           View Opportunities
         </button>

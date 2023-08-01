@@ -159,7 +159,7 @@ padding: 1rem;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  
+
 }
 
 .error {
@@ -170,7 +170,7 @@ padding: 1rem;
 .unitInput {
   width: -webkit-fill-available;
   margin: 0.5rem 0rem;
-  border-block-color: red;
+  border-block-color: lightgreen;
 }
 
 .no-arrows::-webkit-inner-spin-button,
